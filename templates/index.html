@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Tables for You</title>
+	<link rel="stylesheet" href="{% static 'css/my.css' %}">
+	<link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+</head>
+<body background="{% static 'photo/bg1.jpg' %}"; >
+<nav id="navi">
+	<label class="logo">Let's Table</label> 
+	<label for="btn" class="icon"><span class="fa fa-bars"></span></label> 
+	<input type="checkbox" id="btn">
+	<ul>
+		
+		<li>Contact
+			<div class="cont">
+				<ul>
+					<li>Email: <div class="sm">XYZ@gmail.com</div></li>
+				</ul>
+			</div>
+		</li>
+		<li>About
+			<div class="abt">
+				<ul>
+					<li>This project<div class="sm2">is the implementation of Online database where users can store their valuable data in tabular form with several other features.</div>
+					</li>
+					<li><dic class="vs">Version : 1.0.1</dic>
+					</li>
+				</ul>
+		</li>
+	</ul>
+</nav>
+<center>
+	<br><br><br><br><br><br><br><br>
+    <font size=20 style="color:white" class="cool"> Welcome To Lets Table<br><div class="here">Here we manage your Data in a tabular way</div> </font>
+	<br><br><br>
+    <div class="two-buttons">
+    <div> <a href="{% url 'login' %}" id="llink"> Login</a></div><br>
+    <div> <a href="/signup" id="slink"> Signup</a></div>
+    </div>
+</body>
+</html>
