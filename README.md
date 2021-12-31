@@ -6,8 +6,8 @@
     password= **ritwik@234**
 
 ### Project Setup Instructions
- **1.** technology requirement:<br/>
-            **a.** Python 3.9.5<br/>
+ **1.** Technology requirement:<br/>
+           <ul><li> Python 3.9.5<br></ul>
   **2.** open project directory with terminal and write in Terminal<br/>
 ```
 python -m venv venv  
