@@ -16,8 +16,8 @@
 ### Tech Stack Used
 <ul>
 <li>Frontend : HTML5, CSS3, Javascript, Bootstrap.
-<li>Backend : Python, Django
-<li>Database : SQL3
+<li>Backend : Python, Django.
+<li>Database : SQL3.
 </ul>
 
 ### Project Setup
