@@ -1,148 +1,223 @@
 <!DOCTYPE html>
 <html lang="en">
+	{% load static %}
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Table Creation</title>
-	<link rel="stylesheet" href="tbl.css">
+	<link rel="stylesheet" href="{% static 'css/tbl.css' %}">
 	<link rel="shortcut icon" href="icon.ico" type="image/x-icon">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-<div id="inpt">
-<nav id="navi">
-	<label class="logo">Lets Create A Table</label> 
-	<ul>
-		<li> Logout</li>
-	</ul>
-</nav>
-<centre>
-<div class="bx">
-	<div class="bx1">
-    	<label class="bxx1">Enter the name of your TABLE<br></label>
-		<input id="t-n" type="text" placeholder="Name of table">
-	</div>
-    <div class="bx2">
-		<label class="bxx2">Enter the Dimensions of your table<br></label>
-		<input id="id1" type="number" min="1" placeholder="Number of Rows" /><br>
-		X<br>
-		<input id="id2" type="number" min="1" placeholder="Number of Columns" />
-	</div>
-	<div class="btsub">
-		<button  onclick="func()">Proceed</button>
-	</div>
-</div>
-</centre>
-</div>
-<div id="table-div">
-	<div id="lyt">
-		<nav id="navt">
-			<label class="logo">Fill it up</label> 
-			<ul>
-				<li> Logout</li>
-			</ul>
+	<div id="inpt">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <div class="container-fluid">
+			<a class="navbar-brand" href="#">Tablu</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			  <span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			  <div class="d-flex"><a class="nav-link active" aria-current="page" href="#">LOGOUT</a></div>
+			</div>
+		  </div>
 		</nav>
-		
-	</div>
-</div>
-</body>
-<style>
-	table{
-		border-collapse: collapse;
-		margin-top: 70px;
-		margin-left: 30px;
-	}
-	table input{
-	font-size: 18px;
-	line-height: 24px;	
-	width: 250px;
-	color: #000000BF;
-	border-radius: 4px;
-	border: 1px solid black;
-	margin-bottom: 1px;
-	}
-	th input{
-		color: black;
-		font-size: 20px;
-		line-height: 24px;
-		font-weight: bold;
-		text-transform: uppercase;
-	}
-	#lyt{
-		display: none;
-		color: aqua;
-	}
-</style>
-<script>
-	var tnme;
-	function func(){
-		document.getElementById("inpt").style.display = "none";
-		document.getElementById("lyt").style.display = "block";
-		var id1 = document.getElementById("id1").value;
-		var id2 = document.getElementById("id2").value;
-		tnme = document.getElementById("t-n").value;
-		var table = document.createElement("table");
-		table.id="table";
-		var tr1=document.createElement("tr");
-		for(var j=1; j<=id2; j++){
-			var th=document.createElement("th")
-			var ip1=document.createElement("input");
-			ip1.type="text";
-			ip1.id="ip"+ i+ j;
-			th.appendChild(ip1);
-			tr1.appendChild(th);
-		}
-		table.appendChild(tr1);
-		for(var i=1; i<=id1; i++){
-			var tr=document.createElement("tr");
-			tr.id="tr"+i;
-			for(var j=1; j<=id2; j++){
-				var td=document.createElement("td");
-				var ip=document.createElement("input");
-				ip.type="text";
-				ip.id="ip"+ i+ j;
-				td.appendChild(ip);
-				tr.appendChild(td);	
+	  <centre>
+	  <div class="bx">
+		  <div class="bx1">
+			  <input id="t-n"class="form-control" type="text" placeholder="Name of table">
+		  </div>
+		  <div class="bx2">
+			  <input class="form-control" id="id1" type="number" min="1" placeholder="Number of Rows" />
+			  X<br>
+			  <input id="id2" class="form-control" type="number" min="1" placeholder="Number of Columns" />
+		  </div>
+		<div class="extrafields row">
+	  
+		</div>
+		<div class="primefield container">
+		  <label for="primefield">Enter column name Which you want as primary</label><br>
+	  <input type="text" id="primarycol" class="form-control primefield" name="primefield" value="" required/>
+		</div>
+		  <div class="btsub btn">
+			  <button  onclick="func()">Proceed</button>
+		  </div>
+	  </div>
+	  </centre>
+	  </div>
+	  <div id="table-div">
+		  <div id="lyt">
+			  <nav id="navt">
+				  <label class="logo">Fill it up</label>
+				  <ul>
+					  <li> Logout</li>
+				  </ul>
+			  </nav>
+	  <h3>Datatypes of particular column.</h3>
+		  </div>
+	  </div>
+	  <div id="outtab"class="ouputtable">
+	  
+	  </div>
+	  <script>
+		  var tnme;
+		  function func(){
+		  btn=document.createElement('button');
+		  var arr2=new Array();
+		  pricol=document.getElementById("primarycol").value;
+			  document.getElementById("inpt").style.display = "none";
+			  document.getElementById("lyt").style.display = "block";
+			  var id1 = document.getElementById("id1").value;
+			  var id2 = document.getElementById("id2").value;
+			  tnme = document.getElementById("t-n").value;
+			  var table = document.createElement("table");
+		  var arr= new Array();
+			  table.id="table";
+		  var count=0;
+		  table.className="mx-auto"
+			  var tr1=document.createElement("tr");
+	  
+		  $(".col-2").each(function(){
+		  var type= $(this).find("select").val();
+		  var k=$(this).find("input").val();
+		  var div1=document.createElement("div");
+		  div1.className="ml-5"
+		  div1.innerHTML=k + "---->" + type;
+		  arr2[count]=k;
+		  arr[count++] = type;
+		  if (pricol==k){div1.innerHTML="Primary_column("+k+"---->"+type+")";}
+		  document.getElementById("lyt").appendChild(div1);
+		  var th=document.createElement("th")
+		  th.innerHTML=k;
+		  tr1.appendChild(th);
+		  });
+	  
+			  table.appendChild(tr1);
+			  for(var i=2; i<=id1; i++){
+			l=0
+				  var tr=document.createElement("tr");
+				  tr.id="tr"+i;
+				  for(var j=1; j<=id2; j++){
+					  var td=document.createElement("td");
+					  var ip=document.createElement("input");
+			  if (arr[l]=="Datetime"){
+				ip.type="datetime-local";
+			  }
+			  else{ip.type=arr[l++];}
+					  ip.id="ip"+ i+ j;
+					  td.appendChild(ip);
+					  tr.appendChild(td);
+				  }
+			  var rmtd=document.createElement("td");
+			  rmtd.innerHTML="<a href='#'>Delete</a>"
+			  rmtd.id="rmtd"+i;
+			  rmtd.onclick = function(){
+				  var tr = document.getElementById("tr" + this.id.substring(4));
+				  tr.parentNode.removeChild(tr);
+			alert("Row Deleted");
+			  };
+			  tr.appendChild(rmtd);
+	  
+			  table.appendChild(tr);
+			  }
+			  document.getElementById("table-div").appendChild(table);
+			  var submit = document.createElement("button");
+		  var add = document.createElement("button");
+			  submit.innerHTML="Submit";
+		  add.innerHTML="ADD";
+		  add.id="addbtn"
+			  submit.onclick = table_to_array;
+			  document.getElementById("table-div").appendChild(submit);
+		  /*document.getElementById("table-div").appendChild(add);
+		  document.querySelector("#addbtn").addEventListener("click", () => {
+	  addRow();
+	  });
+	  const addRow = () => {
+	  let row = document.createElement("tr");
+	  i++;
+	  row.id="tr"+i;
+	  var ip1=document.createElement("input");
+	  for (var k=0;k<id2;k++){
+		ip.id="ip"+i+k;
+		let column1 = document.createElement("td");
+		var column1text = document.createElement(ip1);
+		column1.appendChild(column1text);
+	  row.appendChild(column1);
+	  }
+	  var rmtd=document.createElement("td");
+	  rmtd.innerHTML="<a href='#'>Delete</a>"
+	  rmtd.id="rmtd"+i;
+	  rmtd.onclick = function(){
+		var tr = document.getElementById("tr" + this.id.substring(4));
+		tr.parentNode.removeChild(tr);
+		alert("Row Deleted");
+	  };
+	  row.appendChild(rmtd);
+	  document.querySelector("#table").appendChild(row);
+	  };*/
+		  }
+		  function table_to_array(){
+			  var table = document.getElementById("table");
+			  var arr = [];
+			  var nme = [];
+			  var row = table.rows[0];
+			  var row_arr=[];
+			  for(var j=1; j<=row.cells.length; j++){
+				  row_arr.push(row.cells[j-1].childNodes[0].value);
+			  }
+			  nme.push(row_arr);
+			  for(var i=2; i<=table.rows.length; i++){
+				  var row = table.rows[i-1];
+				  var row_arr=[];
+				  for(var j=1; j<=row.cells.length -1; j++){
+					  row_arr.push(row.cells[j-1].childNodes[0].value);
+				  }
+				  arr.push(row_arr);
+			  }
+		 var tab=document.createElement('table');
+		  for (var i=0;i<row_arr.length;i++){
+			let r=document.createElement('tr');
+			for (var j=0;j<row_arr[i].length;j++){
+			  if (i==0){
+				let head=document.createElement('th');
+				head.innerHTML="arr2[j]";
+				r.appendChild(head);
+			  }
+			  else{
+			  let data=document.createElement("td");
+			  data.innerHTML=row_arr[i][j];
+			  r.appendChild(data);
 			}
-		var rmtd=document.createElement("td");
-		rmtd.innerHTML="<a href='#'>Remove_Row</a>"
-		rmtd.id="rmtd"+i;
-		rmtd.onclick = function(){
-			var tr = document.getElementById("tr" + this.id.substring(4));
-			tr.parentNode.removeChild(tr);
-		};
-		tr.appendChild(rmtd);
-
-		table.appendChild(tr);
+		  }
+		  tab.appendChild(r);
+		  }
+		  document.getElementById("outtab").appendChild(tab);
+			  console.log(tnme);
+			  console.log(nme);
+			  console.log(arr);
+		  }
+	  $("#id2").focus(function() {
+		$(".col-2").remove();
+		var col=document.getElementById("id2").value;
+		console.log(col);
+		for(var j=1; j<=col; j++){
+		$(".extrafields").append('<div class="col-2 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><br><input type="text" placeholder="Enter Column Name"/></div>');
 		}
-		document.getElementById("table-div").appendChild(table);
-		var submit = document.createElement("button");
-		submit.innerHTML="Submit";
-		submit.onclick = table_to_array;
-		document.getElementById("table-div").appendChild(submit);
-	}
-	function table_to_array(){
-		var table = document.getElementById("table");
-		var arr = [];
-		var nme = [];
-		var row = table.rows[0];
-		var row_arr=[];
-		for(var j=1; j<=row.cells.length; j++){
-			row_arr.push(row.cells[j-1].childNodes[0].value);
-		}
-		nme.push(row_arr);
-		for(var i=2; i<=table.rows.length; i++){
-			var row = table.rows[i-1];
-			var row_arr=[];
-			for(var j=1; j<=row.cells.length -1; j++){
-				row_arr.push(row.cells[j-1].childNodes[0].value);
-			}
-			arr.push(row_arr);
-		}
-		console.log(tnme);
-		console.log(nme);
-		console.log(arr);		
-	}
-</script>
+	  });
+		$("#id2").blur(function() {
+		  $(".col-2").remove();
+		  var col=document.getElementById("id2").value;
+		  console.log(col);
+	  for(var j=1; j<=col; j++){
+		  $(".extrafields").append('<div class="col-2 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><br><input type="text" placeholder="Enter Column Name"/></div>');
+	  }
+	  });
+	  
+	  </script>
 </html>

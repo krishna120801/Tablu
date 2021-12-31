@@ -24,6 +24,7 @@ def signin(request):
     return render(request,'registration/login.html')
 def home(request):
     return render(request,'index.html')
+@login_required(login_url="login")
 def main(request):
     return render(request,'fsttblpg.html')
 def signup(request):
