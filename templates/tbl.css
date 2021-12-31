@@ -4,7 +4,8 @@ body{
         background-repeat: no-repeat no-repeat;
           background-attachment: fixed;
           background-size: 100% 100%;
-          overflow-x: hidden;
+          overflow-x: scroll;
+          overflow-y:scroll;
     }
     *{
     padding: 0;
@@ -23,8 +24,12 @@ nav{
     height: 50px;
     color: #ffffff;
     z-index: 20;
+    position: fixed ;
+    width: 100%;
     }
-    
+#navt{
+    top: 0px;
+}
 /* ##Table-topleft##---------------------------------- */
 label.logo{
     color: White;
@@ -69,7 +74,7 @@ nav ul{
     }
 /* Box---------------------------------------------- */
 .bx{
-	height: 94vh;
+	height: 82vh;
 	width: 100%;
     padding: 10px;
 }
@@ -80,10 +85,8 @@ nav ul{
     text-align: center;
     border-radius: 15px;
     display: block;
-    position: relative;
-	padding-top: 2vh;
+	padding-top: 8vh;
     padding-bottom: 3vh;
-    margin-top: 10px;
     font-size: 35px;
 /*	border: 2px solid black;*/
     transition: 0.8s;
@@ -158,14 +161,32 @@ button:hover{
     letter-spacing: 3px;
 }
 /*TABLE_______________________________________________*/
-.table-div{
-    font-size: 12px;
-    padding: 4px 5px;
-    line-height: 14px;
+table input:hover{
+    background-color: rgb(61, 61, 61);
+    color: white;
 }
-.table-div input{
-    border-color: blueviolet;
-    border-radius: 20px;
+Table a{
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    border: 1px solid black; 
+    padding: 2px 6px;
+    border-radius: 10px;
+   
+    background-color: red;
+    transition: 0.5s;
+}
+table a:hover{
+    background-color: white;
+    color: red;
+    border-color: red;
+    margin-right: 100px;
+}
+#table-div button{
+    margin-left: 30px;
+    margin-top: 20px;
 }
 /*RESPONSIVE_______________________________________________*/
 @media all and (max-width: 960px){
