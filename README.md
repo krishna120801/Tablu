@@ -5,19 +5,6 @@
 2. email= _ritwik@gmail.com_
     password= **ritwik@234**
 
-### Project Setup Instructions
- **1.** Technology requirement:<br/>
-           <ul><li> Python 3.9.5<br></ul>
-  **2.** Open project directory with terminal and write in Terminal<br/>
-```
-python -m venv venv  
-        
-venv/scripts/activate  
-        
-python -m pip install -r requirements.txt  
-        
-python manage.py runserver  
-```
 ### Developers
 **1.** Krishna Sahu [https://github.com/krishna120801]<br>
 **2.** Ritwik Kumar De [https://github.com/Ritwik-CaptainRitz]<br>
@@ -29,8 +16,8 @@ python manage.py runserver
 ### Tech Stack Used
 <ul>
 <li>Frontend : HTML5, CSS3, Javascript, Bootstrap.
-<li>Backend : Python
-<li>Database : MySQL
+<li>Backend : Python, Django
+<li>Database : SQL3
 </ul>
 
 ### Project Setup
