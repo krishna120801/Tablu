@@ -8,7 +8,7 @@
 ### Project Setup Instructions
  **1.** Technology requirement:<br/>
            <ul><li> Python 3.9.5<br></ul>
-  **2.** open project directory with terminal and write in Terminal<br/>
+  **2.** Open project directory with terminal and write in Terminal<br/>
 ```
 python -m venv venv  
         
