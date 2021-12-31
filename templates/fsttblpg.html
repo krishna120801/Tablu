@@ -50,7 +50,7 @@
 <style>
 	table{
 		border-collapse: collapse;
-		margin-top: 20px;
+		margin-top: 70px;
 		margin-left: 30px;
 	}
 	table input{
@@ -106,7 +106,7 @@
 				tr.appendChild(td);	
 			}
 		var rmtd=document.createElement("td");
-		rmtd.innerHTML="<a href='#'>X</a>"
+		rmtd.innerHTML="<a href='#'>Remove_Row</a>"
 		rmtd.id="rmtd"+i;
 		rmtd.onclick = function(){
 			var tr = document.getElementById("tr" + this.id.substring(4));
