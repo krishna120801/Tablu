@@ -36,7 +36,9 @@ body{
 	color: white;
 	transition: .6s;
 }
-
+#errormsg{
+	font-size: 15px;
+}
 .container input::placeholder{
 	color: white;
 	letter-spacing: 1px;

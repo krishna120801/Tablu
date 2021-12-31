@@ -5,7 +5,10 @@ body{
     overflow: hidden;
     color: white;
 }
-
+#errormsg{
+	font-size: 15px;
+	list-style-type: none;
+}
 .text-center{
 	transform: scale(1.2);
 }

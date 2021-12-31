@@ -6,20 +6,22 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from django.contrib.auth.models import User
-def login(request):
+def signin(request):
     logout(request)
-    username = password = ''
+    emai = passs = ''
     if request.method=='POST':
-        print("i'm post")
-        username = request.POST['email']
-        password = request.POST['password']
-        print(username,password)
-        user = authenticate(email=username, password=password)
+        emai = request.POST['email']
+        passs = request.POST['password']
+        m=User.objects.get(email=emai)
+        user = authenticate(username=m, password=passs)
         if user is not None:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect('tablu')
-    return render(request,'lgn.html')
+                return redirect('tablu')
+        else:
+            messages.error(request, "Invalid Email or Password.")
+            return render(request,'registration/login.html')
+    return render(request,'registration/login.html')
 def home(request):
     return render(request,'index.html')
 def main(request):

@@ -20,6 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name="home"),
     path('signup',views.signup,name="signup"),
-    path('',include('django.contrib.auth.urls')),
+    path('tablu',views.main,name="tablu"),
+    path('login/',views.signin,name="login"),
 
 ]

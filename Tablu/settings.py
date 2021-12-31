@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tablecreation',
 ]
-
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -77,16 +76,11 @@ WSGI_APPLICATION = 'Tablu.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'Tabludatabase',
-        'USER':'root',
-        'PASSWORD':'root123',
-        'HOST':'localhost',
-        'PORT':'3306',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
-LOGIN_REDIRECT_URL='home'
-LOGIN_URL='home'
+LOGIN_REDIRECT_URL='tablecreate'
 LOGOUT_URL='login'
 LOGOUT_REDIRECT_URL="login"
 
