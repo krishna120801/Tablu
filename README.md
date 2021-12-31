@@ -11,7 +11,10 @@
   **2.** open project directory with terminal and write in Terminal<br/>
             ```
             python -m venv venv  
+            
             venv/scripts/activate  
+            
             python -m pip install -r requirements.txt  
+            
             python manage.py runserver  
             ```
