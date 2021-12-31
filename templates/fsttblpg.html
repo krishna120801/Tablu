@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,14 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Table Creation</title>
-	<link rel="stylesheet" href="{% static 'css/my.css' %}">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="tbl.css">
 	<link rel="shortcut icon" href="icon.ico" type="image/x-icon">
 </head>
 <body>
+<div id="inpt">
 <nav id="navi">
 	<label class="logo">Lets Create A Table</label> 
 	<ul>
@@ -22,52 +18,131 @@
 	</ul>
 </nav>
 <centre>
-<form id="myform" action="" method="post" class="bx">
+<div class="bx">
 	<div class="bx1">
     	<label class="bxx1">Enter the name of your TABLE<br></label>
-		<input id="tn" type="text" placeholder="Name of table">
+		<input id="t-n" type="text" placeholder="Name of table">
 	</div>
     <div class="bx2">
 		<label class="bxx2">Enter the Dimensions of your table<br></label>
-		<input id="tr" name="rowval" type="number" min="1" placeholder="Number of Rows"><br>
+		<input id="id1" type="number" min="1" placeholder="Number of Rows" /><br>
 		X<br>
-		<input id="tc" type="number" name="columnval" min="1" placeholder="Number of Columns">
-	</div>
-	<div class="bx3">
-		<label class="bxx3">Enter the Domain</label>
-
+		<input id="id2" type="number" min="1" placeholder="Number of Columns" />
 	</div>
 	<div class="btsub">
-		<button type="submit">Proceed</button>
+		<button  onclick="func()">Proceed</button>
 	</div>
-</form>
+</div>
 </centre>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    body=document.createElement('body');
-              $('#myform').submit(function() {
-                event.preventDefault();
-                  var rowval = parseInt(event.target.rowval.value);
-                  var columnval = parseInt(event.target.columnval.value);
-                  document.write('<table border="1">');
-                  for (var i=0;i<rowval;i++){
-                    document.write('<tr>');
-                    for (var j=0;j<columnval;j++){
-                      if (i==0){
-                        document.write("<th>"+"<div contenteditable>I'm editable</div>"+"</th>");
-                      }
-                      else{
-                      document.write("<td>"+"<div contenteditable>I'm editable</div>"+"</td>");
-                    }
-                  }
-                    document.write('</tr>');
-                  }
-                  document.write('</table>');
-              });
-          });
-
-</script>
+</div>
+<div id="table-div">
+	<div id="lyt">
+		<nav id="navt">
+			<label class="logo">Fill it up</label> 
+			<ul>
+				<li> Logout</li>
+			</ul>
+		</nav>
+		
+	</div>
+</div>
 </body>
+<style>
+	table{
+		border-collapse: collapse;
+		margin-top: 20px;
+		margin-left: 30px;
+	}
+	table input{
+	font-size: 18px;
+	line-height: 24px;	
+	width: 250px;
+	color: #000000BF;
+	border-radius: 4px;
+	border: 1px solid black;
+	margin-bottom: 1px;
+	}
+	th input{
+		color: black;
+		font-size: 20px;
+		line-height: 24px;
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+	#lyt{
+		display: none;
+		color: aqua;
+	}
+</style>
+<script>
+	var tnme;
+	function func(){
+		document.getElementById("inpt").style.display = "none";
+		document.getElementById("lyt").style.display = "block";
+		var id1 = document.getElementById("id1").value;
+		var id2 = document.getElementById("id2").value;
+		tnme = document.getElementById("t-n").value;
+		var table = document.createElement("table");
+		table.id="table";
+		var tr1=document.createElement("tr");
+		for(var j=1; j<=id2; j++){
+			var th=document.createElement("th")
+			var ip1=document.createElement("input");
+			ip1.type="text";
+			ip1.id="ip"+ i+ j;
+			th.appendChild(ip1);
+			tr1.appendChild(th);
+		}
+		table.appendChild(tr1);
+		for(var i=1; i<=id1; i++){
+			var tr=document.createElement("tr");
+			tr.id="tr"+i;
+			for(var j=1; j<=id2; j++){
+				var td=document.createElement("td");
+				var ip=document.createElement("input");
+				ip.type="text";
+				ip.id="ip"+ i+ j;
+				td.appendChild(ip);
+				tr.appendChild(td);	
+			}
+		var rmtd=document.createElement("td");
+		rmtd.innerHTML="<a href='#'>X</a>"
+		rmtd.id="rmtd"+i;
+		rmtd.onclick = function(){
+			var tr = document.getElementById("tr" + this.id.substring(4));
+			tr.parentNode.removeChild(tr);
+		};
+		tr.appendChild(rmtd);
+
+		table.appendChild(tr);
+		}
+		document.getElementById("table-div").appendChild(table);
+		var submit = document.createElement("button");
+		submit.innerHTML="Submit";
+		submit.onclick = table_to_array;
+		document.getElementById("table-div").appendChild(submit);
+	}
+	function table_to_array(){
+		var table = document.getElementById("table");
+		var arr = [];
+		var nme = [];
+		var row = table.rows[0];
+		var row_arr=[];
+		for(var j=1; j<=row.cells.length; j++){
+			row_arr.push(row.cells[j-1].childNodes[0].value);
+		}
+		nme.push(row_arr);
+		for(var i=2; i<=table.rows.length; i++){
+			var row = table.rows[i-1];
+			var row_arr=[];
+			for(var j=1; j<=row.cells.length -1; j++){
+				row_arr.push(row.cells[j-1].childNodes[0].value);
+			}
+			arr.push(row_arr);
+		}
+		console.log(tnme);
+		console.log(nme);
+		console.log(arr);		
+	}
+</script>
 </html>
