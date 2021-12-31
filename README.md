@@ -45,3 +45,4 @@ git commit -m "[mandatory commit message]"
 git push [url to your repository] master/main 
 ```
 **7.** Now your commit will be successfully pushed to the main branch of your GitHub repository.
+=======
