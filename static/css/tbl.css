@@ -107,7 +107,12 @@ label{
 .bx label:hover{
     color: rgb(207, 108, 101);
 }
-
+.table{
+    width:60%!important;
+    text-align: center!important;
+    margin:5%!important;
+    overflow: scroll!important;
+}
 /*INPUT________________________________________________________________*/
 .bx input{
     border-radius: 80px;
