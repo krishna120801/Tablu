@@ -13,7 +13,11 @@ body{
     list-style: none;
     box-sizing: border-box; 
     }
-    
+    .filtblock{
+        position:absolute;
+        background-color: #f2f2f2;
+
+    }
     body{
     font-family: montserrat;
     }
@@ -83,7 +87,6 @@ nav ul{
     position: relative;
 	padding-top: 2vh;
     padding-bottom: 3vh;
-    margin-top: 10px;
     font-size: 35px;
 /*	border: 2px solid black;*/
     transition: 0.8s;
@@ -96,10 +99,8 @@ nav ul{
     border-radius: 15px;
 	padding-top: 2vh;
     padding-bottom: 3vh;
-    margin-top: 10px;
     font-size: 35px;
     transition: 0.8s;
-/*	border: 2px solid black;*/
 }
 label{
     transition: 0.6s;
@@ -108,7 +109,7 @@ label{
     color: rgb(207, 108, 101);
 }
 .table{
-    width:60%!important;
+    width:600px!important;
     text-align: center!important;
     margin:5%!important;
     overflow: scroll!important;
@@ -146,13 +147,8 @@ button{
     text-align: center;
     align-items: center;
     align-content: center;
-    margin-top: 20px;
     padding: 6px 5px;
-    font-size: 15px;
-    border-radius: 5px;
     background-color: white;
-    border-color: 2px black;
-    cursor: pointer;
     letter-spacing: 2px;
     transition: .5s;
 }
@@ -195,6 +191,7 @@ button:hover{
     }
     nav ul li:hover{
         font-size: 13px;
+}
 }
 @media all and (max-width: 300px){
         .bx1{

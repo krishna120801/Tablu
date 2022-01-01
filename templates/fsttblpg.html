@@ -62,11 +62,21 @@
 	  <h3>Datatypes of particular column.</h3>
 		  </div>
 	  </div>
+	  <div class="container filcontainer"> 
+		  <h3>Filters</h3>
+		<div id="filters" class="filter m-4">
+		  <select name="columnvalue" id="columnvalue">
+		  </select>
+		</div>
+	  </div>
 	  <div id="outtab"class="ouputtable">
 	  
 	  </div>
 	  <script>
 		  var tnme;
+		  var pricol;
+		  var dict={}
+		  $(".filcontainer").css("display","none");
 		  function func(){
 		  btn=document.createElement('button');
 		  var arr2=new Array();
@@ -83,12 +93,13 @@
 		  table.className="mx-auto"
 			  var tr1=document.createElement("tr");
 	  
-		  $(".col-2").each(function(){
+		  $(".col-6").each(function(){
 		  var type= $(this).find("select").val();
 		  var k=$(this).find("input").val();
 		  var div1=document.createElement("div");
 		  div1.className="ml-5"
 		  div1.innerHTML=k + "---->" + type;
+		  dict[k]=type;
 		  arr2[count]=k;
 		  arr[count++] = type;
 		  if (pricol==k){div1.innerHTML="Primary_column("+k+"---->"+type+")";}
@@ -164,6 +175,7 @@
 	  };*/
 		  }
 		  function table_to_array(){
+			  $(".filcontainer").css("display","block");
 			  var table = document.getElementById("table");
 			  var arr = [];
 			  var columnname = [];
@@ -173,6 +185,16 @@
 				row_arr.push(row.cells[j-1].childNodes[0].textContent);
 			  }
 			  columnname.push(row_arr);
+			  console.log(columnname);
+			  if ($("#columnvalue").children().length<columnname.length){
+				for (var i=0;i<columnname.length+1;i++){
+				  op=document.createElement("option");
+				  op.value=columnname[0][i];
+				  op.innerHTML=columnname[0][i];
+				  document.getElementById("columnvalue").appendChild(op);
+			  }
+			  }
+
 			  arr.push(row_arr);
 			  for(var i=2; i<=table.rows.length; i++){
 				  var row = table.rows[i-1];
@@ -182,41 +204,345 @@
 				  }
 				  arr.push(row_arr);
 			  }
-		 var tab=document.createElement('table');
-		 tab.className="table table-bordered"
-		 tab.border="1";
-		  for (var i=0;i<arr.length;i++){
-			let r=document.createElement('tr');
-			for (var j=0;j<arr[i].length;j++){
-			  if (i==0){
-				let head=document.createElement('th');
-				head.innerHTML=arr[0][j];
-				r.appendChild(head);
+			  var set= new Set();
+			  if (pricol!="")
+			  {
+			for (var i=0;i<arr.length;i++){
+				if (arr[0][i]==pricol){
+					for (var j=0;j<arr.length;j++)
+					if (arr[j][i].length==0){
+						continue;
+					}
+					else{set.add(arr[j][i]);}
+				}
+			}
+			if (set.size==arr.length )
+			{
+			var tab=document.createElement('table');
+			tab.id="orgtable"
+		 	tab.className="table table-bordered"
+		 	tab.border="1";
+		  	for (var i=0;i<arr.length;i++){
+				let r=document.createElement('tr');
+				for (var j=0;j<arr[i].length;j++){
+			  		if (i==0){
+						let head=document.createElement('th');
+						head.innerHTML=arr[0][j];
+						r.appendChild(head);
 			  }
-			  else{
-			  let data=document.createElement("td");
-			  data.innerHTML=arr[i][j];
-			  r.appendChild(data);
+			  		else{
+			  			let data=document.createElement("td");
+			  			data.innerHTML=arr[i][j];
+			  			r.appendChild(data);
 			}
 		  }
 		  tab.appendChild(r);
 		  }
-		  if ($('#outtab').children().length > 0 ){
+		  if ($('#outtab').children('table').length > 0 ){
+			  alert("Table Updated");
+			$("#outtab").children("table").remove();
+			$("#outtab").children("h4").remove();
+		  }
+		  else{alert("table Created!");$("#outtab").children("h4").remove();}
+		 $('.filcontainer').css('display','block'); 
+		  document.getElementById("outtab").appendChild(tab);
+		}
+		else{
+			$('#outtab').html('<h4 class="alert alert-danger">Primary column must contain unique values and cannot be null</h4>')
+		$(".filter").css('display','none');
+		}
+	}
+	else{
+	var tab=document.createElement('table');
+		 	tab.className="table table-bordered"
+			 tab.id="orgtable";
+		 	tab.border="1";
+		  	for (var i=0;i<arr.length;i++){
+				let r=document.createElement('tr');
+				for (var j=0;j<arr[i].length;j++){
+			  		if (i==0){
+						let head=document.createElement('th');
+						head.innerHTML=arr[0][j];
+						r.appendChild(head);
+			  }
+			  		else{
+			  			let data=document.createElement("td");
+			  			data.innerHTML=arr[i][j];
+			  			r.appendChild(data);
+			}
+		  }
+		  tab.appendChild(r);
+		  }
+		  if ($('#outtab').children('table').length > 0 ){
 			  alert("Table Updated");
 			$("#outtab").children("table").remove();
 		  }
 		  else{alert("table Created!");}
+		 $('.filter').css('display','block'); 
 		  document.getElementById("outtab").appendChild(tab);
-			  console.log(tnme);
+		}
+		$('#columnvalue').change(function(){
+				  $("#filters").children('div').remove();
+				if(dict[$(this).val()]=="String" || dict[$(this).val()]=="Email"){
+					var di=document.createElement("div");
+					var ip=document.createElement("input");
+					ip.className="form-control my-2 w-20 fill";
+					ip.type="search";
+					ip.placeholder="Search";
+					di.appendChild(ip);
+					var lab=document.createElement("h6");
+					lab.innerHTML="Type in field and get filtered data:)"
+					di.appendChild(lab);
+					document.getElementById("filters").appendChild(di);
+					var selectitem=$(this).val();
+				var mainval;
+				for (var k=0;k<arr[0].length;k++){
+					if (selectitem==arr[0][k]){
+						mainval=k;
+						break;
+					}
+				}
+				}
+				else if (dict[$(this).val()]=="Boolean"){
+					var selectitem=$(this).val();
+					var mainval;
+					for (var k=0;k<arr[0].length;k++){
+						if (selectitem==arr[0][k]){
+							mainval=k;
+							break;
+						}
+					}
+					var di=document.createElement("div");
+					var di1=document.createElement("div");
+					di1.className="d-flex mt-2";
+					var bt=document.createElement("button");
+					 bt.className="btsub btn true";
+					 bt.innerHTML="True";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn false";
+					 bt.innerHTML="False";
+					 di1.appendChild(bt); 
+					di.appendChild(di1);
+					document.getElementById("filters").appendChild(di);
+				}
+				else if (dict[$(this).val()]=="Number"){
+					
+					var selectitem=$(this).val();
+					var mainval;
+					for (var k=0;k<arr[0].length;k++){
+						if (selectitem==arr[0][k]){
+							mainval=k;
+							break;
+						}
+					}
+					var di=document.createElement("div");
+					var ip=document.createElement("input");
+					ip.className="form-control my-2 w-20 fillnum";
+					ip.type="number";
+					ip.placeholder="Search";
+					di.appendChild(ip);
+					var di1=document.createElement("div");
+					di1.className="d-flex mt-2";
+					 
+					var bt=document.createElement("button");
+					 bt.className="btsub btn eq";
+					 bt.innerHTML="Check Equalto";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn noteq";
+					 bt.innerHTML="Check Not Equal";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn less";
+					 bt.innerHTML="Check Less than";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn greater";
+					 bt.innerHTML="Check greater than";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn notnull";
+					 bt.innerHTML="Check not null";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn null";
+					 bt.innerHTML="Check null";
+					 di1.appendChild(bt);
+di.appendChild(di1);
+					document.getElementById("filters").appendChild(di);
+				
+			}
+			$(".false").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue=="F" || txtValue=="f" || txtValue=="1" || txtValue==1 || txtValue=="False" || txtValue=="false") {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+			$(".true").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue=="T" || txtValue=="t" || txtValue=="0" || txtValue==0 || txtValue=="True" || txtValue=="true") {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+				$(".fill").keyup(function(){
+					var input, filter, table, tr, td, i, txtValue;
+  filter = $(this).val();
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+				});
+				$(".eq").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue == filter) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });	
+					 $(".less").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (parseInt(txtValue) < parseInt(filter)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+					 $(".noteq").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue != filter) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+					 $(".greater").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.value || td.innerText;
+      if (parseInt(txtValue) > parseInt(filter)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+					 $(".null").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue == "") {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+					 $(".notnull").click(function(){
+							filter=$(".fillnum").val();
+					var input, filter, table, tr, td, i, txtValue;
+  table = document.getElementById("orgtable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[mainval];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }	
+					 });
+		});
+  console.log(tnme);
 			  console.log(columnname);
 			  console.log(arr);
-		  }
+}
 	  $("#id2").focus(function() {
 		$(".col-2").remove();
 		var col=document.getElementById("id2").value;
 		console.log(col);
 		for(var j=1; j<=col; j++){
-		$(".extrafields").append('<div class="col-2 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><br><input type="text" placeholder="Enter Column Name"/></div>');
+		$(".extrafields").append('<div class="col-6 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><input type="text" placeholder="Enter Column Name"/></div>');
 		}
 	  });
 		$("#id2").blur(function() {
@@ -224,7 +550,7 @@
 		  var col=document.getElementById("id2").value;
 		  console.log(col);
 	  for(var j=1; j<=col; j++){
-		  $(".extrafields").append('<div class="col-2 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><br><input type="text" placeholder="Enter Column Name"/></div>');
+		  $(".extrafields").append('<div class="col-6 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><input type="text" placeholder="Enter Column Name"/></div>');
 	  }
 	  });
 	  

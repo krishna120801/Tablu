@@ -12,8 +12,12 @@ def signin(request):
     if request.method=='POST':
         emai = request.POST['email']
         passs = request.POST['password']
-        m=User.objects.get(email=emai)
-        user = authenticate(username=m, password=passs)
+        try:
+            m=User.objects.get(email=emai)
+            user = authenticate(username=m, password=passs)
+        except:
+            messages.error(request, "Invalid Email or Password.")
+            return render(request,'registration/login.html')
         if user is not None:
             if user.is_active:
                 login(request, user)
