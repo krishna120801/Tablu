@@ -69,7 +69,8 @@
 	  
 	  </div>
 	  <div>
-		  <button id="Save" type="submit" name="urli" onclick="Export()" class="d-none btsub btn ml-4">Save The Table</button>
+		  <button id="Save" type="submit" name="urli" onclick="Export()" class="d-none btsub btn ml-4">Save As PDF</button>
+		  <button id="Save1" type="submit" name="urli" onclick="historic()" class="d-none btsub btn ml-4">Save As History</button>
 	  </div>
 	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -306,6 +307,8 @@
 		  else{alert("table Created!");
 		  $("#Save").removeClass( 'd-none' );
 		 $( '#Save' ).addClass( 'd-block' );
+		 $("#Save1").removeClass( 'd-none' );
+		 $( '#Save1' ).addClass( 'd-block' );
 		}
 		 $('.filter').css('display','block'); 
 		  document.getElementById("outtab").appendChild(tab);
@@ -574,10 +577,12 @@ di.appendChild(di1);
 		});
  		$("#sub").click(function(){$("#Save").removeClass( 'd-none' );
 		 $( '#sub' ).addClass( 'd-block' );
+		 $("#sub").click(function(){$("#Save1").removeClass( 'd-none' );
 	});	
 		console.log(tnme);
 		console.log(columnname);
 		console.log(arr);
+});
 }
 	  $("#id2").focus(function() {
 		$(".col-6").remove();
@@ -607,14 +612,21 @@ di.appendChild(di1);
                         }]
                     };
 					pdfMake.createPdf(docDefinition).download(document.getElementById("tblname").textContent+".pdf");
-                //    pdfMake.createPdf(docDefinition).download(document.getElementById("tblname").textContent+".pdf");
-$.ajax({
-    url: 'tablu',
-    data :{'data':data}
-});
    
             }
 		});
         }
+		function historic() {
+			alert("History Updated!");
+            html2canvas(document.getElementById('orgtable'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+					$.ajax({
+    url: 'tablu',
+    data :{'data':data}
+});
+				}
+				});
+			}
 	  </script>
 </html>

@@ -34,10 +34,14 @@ def home(request):
 @login_required(login_url="login")
 def main(request):
     data=request.GET.get('data')
+    name=str(request.user.username)
+    str1=name+"_userhis.pdf"
     if data!=None:
         data=data.replace("data:image/png;base64,","")
         im = Image.open(BytesIO(base64.b64decode(data)))
-        im.save('image.pdf', 'PDF')
+        if im.mode=="RGBA":
+            im=im.convert("RGB")
+        im.save(str1, 'PDF')
     return render(request,'fsttblpg.html')
 def signup(request):
     if request.method == 'POST':   
