@@ -13,14 +13,14 @@ This is an online table creation platform made by Krishna Sahu and Ritwik Kumar 
 **2.** Ritwik Kumar De [https://github.com/Ritwik-CaptainRitz]<br>
 <ul>
 <li>Frontend + JavaScript Functionality : Ritwik Kumar De
-<li>Backend + Database : Krishna Sahu
+<li>Jquery + Javascript + Backend language + Database : Krishna Sahu
 </ul>
 
 ## Tech Stack Used
 <ul>
-<li>Frontend : HTML5, CSS3, Javascript, Bootstrap.
+<li>Frontend : HTML5, CSS3, Javascript, Bootstrap, Jquery.
 <li>Backend : Python, Django.
-<li>Database : SQlite 3.
+<li>Database : SQlite3.
 </ul>
 
 ## Project Setup
