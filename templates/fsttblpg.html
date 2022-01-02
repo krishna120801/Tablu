@@ -73,8 +73,8 @@
 		  var dict={}
 		  $(".filcontainer").css("display","none");
 		  function func(){
-			  if ($("#t-n").val()=="" && $("#id1").val()=="" && $("#id2").val()==""){
-				  alert("Please fill table name column and row value");
+			  if ($("#t-n").val()=="" || ($("#id1").val()=="" && $("#id2").val()=="")){
+				  alert("Please fill table name or column and row value");
 			  }
 			  else{
 		  btn=document.createElement('button');
