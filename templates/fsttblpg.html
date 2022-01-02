@@ -67,6 +67,11 @@
 	  <div id="outtab"class="ouputtable">
 	  
 	  </div>
+	  <div>
+		  <button id="Save" onclick="Export()" class="d-none btsub btn ml-4">Save The Table</button>
+	  </div>
+	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 	  <script>
 		  var tnme;
 		  var pricol;
@@ -143,6 +148,7 @@
 			  }
 			  document.getElementById("table-div").appendChild(table);
 			  var submit = document.createElement("button");
+			  submit.id="sub";
 		  var add = document.createElement("button");
 			  submit.innerHTML="Submit";
 		  add.innerHTML="ADD";
@@ -184,6 +190,7 @@
 
 		   }
 		 }
+
 		  function table_to_array(){
 			  $(".filcontainer").css("display","block");
 			  var table = document.getElementById("table");
@@ -558,9 +565,12 @@ di.appendChild(di1);
   }	
 					 });
 		});
-  console.log(tnme);
-			  console.log(columnname);
-			  console.log(arr);
+ 		$("#sub").click(function(){$("#Save").removeClass( 'd-none' );
+		 $( '#sub' ).addClass( 'd-block' );
+	});	
+		console.log(tnme);
+		console.log(columnname);
+		console.log(arr);
 }
 	  $("#id2").focus(function() {
 		$(".col-6").remove();
@@ -579,5 +589,19 @@ di.appendChild(di1);
 	  }
 	  });
 	  
+	  function Export() {
+            html2canvas(document.getElementById('orgtable'), {
+                onrendered: function (canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 500
+                        }]
+                    };
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
+                }
+            });
+        }
 	  </script>
 </html>
