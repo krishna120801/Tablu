@@ -16,18 +16,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
-	<div id="inpt">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <div class="container-fluid">
-			<a class="navbar-brand" href="#">Tablu</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			  <div class="d-flex"><a class="nav-link active" aria-current="page" href="#">LOGOUT</a></div>
-			</div>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid">
+		  <a class="navbar-brand" href="#">Tablu</a>
+		  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<div class="d-flex"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGOUT</a></div>
 		  </div>
-		</nav>
+		</div>
+	  </nav>
+	<div id="inpt">
 	  <centre>
 	  <div class="bx">
 		  <div class="bx1">
@@ -53,17 +53,7 @@
 	  </div>
 	  <div id="table-div">
 		  <div id="lyt">
-			  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-		  <div class="container-fluid">
-			<a class="navbar-brand" href="#">Tablu</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			  <div class="d-flex"><a class="nav-link active" aria-current="page" href="#">LOGOUT</a></div>
-			</div>
-		  </div>
-		</nav>
+		<label for="">table name:- <h4 id="tblname"></h4></label>
 	  <h3>Datatypes of particular column.</h3>
 		  </div>
 	  </div>
@@ -85,12 +75,14 @@
 		  function func(){
 		  btn=document.createElement('button');
 		  var arr2=new Array();
+		  var rowval;
 		  pricol=document.getElementById("primarycol").value;
 			  document.getElementById("inpt").style.display = "none";
 			  document.getElementById("lyt").style.display = "block";
 			  var id1 = document.getElementById("id1").value;
 			  var id2 = document.getElementById("id2").value;
 			  tnme = document.getElementById("t-n").value;
+			  var tabname=document.getElementById("tblname").innerHTML=tnme;
 			  var table = document.createElement("table");
 		  var arr= new Array();
 			  table.id="table";
@@ -117,9 +109,10 @@
 	  
 			  table.appendChild(tr1);
 			  for(var i=2; i<=id1; i++){
-			l=0
+			l=0;
 				  var tr=document.createElement("tr");
 				  tr.id="tr"+i;
+				  rowval=i;
 				  for(var j=1; j<=id2; j++){
 					  var td=document.createElement("td");
 					  var ip=document.createElement("input");
@@ -134,6 +127,7 @@
 			  var rmtd=document.createElement("td");
 			  rmtd.innerHTML="<a href='#'>Delete</a>"
 			  rmtd.id="rmtd"+i;
+			  var rmtdval=i;
 			  rmtd.onclick = function(){
 				  var tr = document.getElementById("tr" + this.id.substring(4));
 				  tr.parentNode.removeChild(tr);
@@ -151,33 +145,39 @@
 		  add.id="addbtn"
 			  submit.onclick = table_to_array;
 			  document.getElementById("table-div").appendChild(submit);
-		  /*document.getElementById("table-div").appendChild(add);
-		  document.querySelector("#addbtn").addEventListener("click", () => {
+		  document.getElementById("table-div").appendChild(add);
+		  
+		document.querySelector("#addbtn").addEventListener("click", () => {
 	  addRow();
 	  });
 	  const addRow = () => {
 	  let row = document.createElement("tr");
-	  i++;
-	  row.id="tr"+i;
-	  var ip1=document.createElement("input");
-	  for (var k=0;k<id2;k++){
-		ip.id="ip"+i+k;
+	  row.id="tr"+rowval+1;
+	  rowval+=1;
+	  id2+=1;
+		for (var m=1;m<=arr2.length;m++){
+		var ip=document.createElement("input");
+		ip.id="ip"+rowval+m;
+		if (dict[arr2[m]]=="Datetime"){
+				ip.type="datetime-local";
+			  }
+		else{ip.type=dict[arr2[m]];}
 		let column1 = document.createElement("td");
-		var column1text = document.createElement(ip1);
-		column1.appendChild(column1text);
+		column1.appendChild(ip);
 	  row.appendChild(column1);
-	  }
-	  var rmtd=document.createElement("td");
-	  rmtd.innerHTML="<a href='#'>Delete</a>"
-	  rmtd.id="rmtd"+i;
-	  rmtd.onclick = function(){
-		var tr = document.getElementById("tr" + this.id.substring(4));
-		tr.parentNode.removeChild(tr);
-		alert("Row Deleted");
-	  };
-	  row.appendChild(rmtd);
+	}
+			var rmtd=document.createElement("td");
+			rmtd.innerHTML="<a href='#'>Delete</a>"
+			rmtd.id="rmtd"+rmtdval+1;
+			  rmtd.onclick = function(){
+				  var tr = document.getElementById("tr" + this.id.substring(4));
+				  tr.parentNode.removeChild(tr);
+			alert("Row Deleted");
+			  };
+			  row.appendChild(rmtd);
 	  document.querySelector("#table").appendChild(row);
-	  };*/
+	  };
+
 		  }
 		  function table_to_array(){
 			  $(".filcontainer").css("display","block");
@@ -295,9 +295,19 @@
 					ip.type="search";
 					ip.placeholder="Search";
 					di.appendChild(ip);
-					var lab=document.createElement("h6");
-					lab.innerHTML="Type in field and get filtered data:)"
-					di.appendChild(lab);
+					var di1=document.createElement("div");
+					di1.className="d-flex mt-2";
+					
+					var bt=document.createElement("button");
+					 bt.className="btsub btn null";
+					 bt.innerHTML="Check Null";
+					 di1.appendChild(bt);
+
+					 var bt=document.createElement("button");
+					 bt.className="btsub btn notnull";
+					 bt.innerHTML="Check Not Null";
+					 di1.appendChild(bt);
+					 di.appendChild(di1);
 					document.getElementById("filters").appendChild(di);
 					var selectitem=$(this).val();
 				var mainval;
@@ -444,7 +454,7 @@ di.appendChild(di1);
     td = tr[i].getElementsByTagName("td")[mainval];
     if (td) {
       txtValue = td.textContent || td.innerText;
-      if (txtValue == filter) {
+      if (txtValue.value == filter) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
@@ -543,7 +553,7 @@ di.appendChild(di1);
 			  console.log(arr);
 }
 	  $("#id2").focus(function() {
-		$(".col-2").remove();
+		$(".col-6").remove();
 		var col=document.getElementById("id2").value;
 		console.log(col);
 		for(var j=1; j<=col; j++){
@@ -551,7 +561,7 @@ di.appendChild(di1);
 		}
 	  });
 		$("#id2").blur(function() {
-		  $(".col-2").remove();
+		  $(".col-6").remove();
 		  var col=document.getElementById("id2").value;
 		  console.log(col);
 	  for(var j=1; j<=col; j++){
