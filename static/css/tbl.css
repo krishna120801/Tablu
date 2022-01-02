@@ -255,6 +255,17 @@ table a:hover{
 h3{
     margin-top: 30px;
 }
+.tbcnt{
+    width: 90%;
+    margin-left: auto;
+    top:20px;
+    padding-top:10px;
+    padding-left:10px;
+    margin-right: auto;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    border: 10px solid brown;
+}
 /*RESPONSIVE_______________________________________________*/
 @media all and (max-width: 960px){
     .bx1{
