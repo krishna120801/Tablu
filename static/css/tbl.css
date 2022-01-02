@@ -4,7 +4,8 @@ body{
         background-repeat: no-repeat no-repeat;
           background-attachment: fixed;
           background-size: 100% 100%;
-          overflow-x: hidden;
+          overflow-x: scroll;
+          overflow-y:scroll;
     }
     *{
     padding: 0;
@@ -13,11 +14,7 @@ body{
     list-style: none;
     box-sizing: border-box; 
     }
-    .filtblock{
-        position:absolute;
-        background-color: #f2f2f2;
-
-    }
+    
     body{
     font-family: montserrat;
     }
@@ -27,8 +24,12 @@ nav{
     height: 50px;
     color: #ffffff;
     z-index: 20;
+    position: fixed ;
+    width: 100%;
     }
-    
+#navt{
+    top: 0px;
+}
 /* ##Table-topleft##---------------------------------- */
 label.logo{
     color: White;
@@ -71,9 +72,22 @@ nav ul{
     transition: .6s;
     text-align: center;
     }
+.d-flex{
+    float: right;
+
+}
+.d-flex a{
+    color: white;
+    float: right;
+    margin-right:10px;
+    line-height: 25px;
+    margin: 10px 10px;
+    margin-top: 2px;
+    background-color: #212529;
+}
 /* Box---------------------------------------------- */
 .bx{
-	height: 94vh;
+	height: 82vh;
 	width: 100%;
     padding: 10px;
 }
@@ -83,9 +97,7 @@ nav ul{
     align-content: center;
     text-align: center;
     border-radius: 15px;
-    display: block;
-    position: relative;
-	padding-top: 2vh;
+	padding-top: 8vh;
     padding-bottom: 3vh;
     font-size: 35px;
 /*	border: 2px solid black;*/
@@ -99,8 +111,10 @@ nav ul{
     border-radius: 15px;
 	padding-top: 2vh;
     padding-bottom: 3vh;
+    margin-top: 10px;
     font-size: 35px;
     transition: 0.8s;
+/*	border: 2px solid black;*/
 }
 label{
     transition: 0.6s;
@@ -108,14 +122,17 @@ label{
 .bx label:hover{
     color: rgb(207, 108, 101);
 }
-.table{
-    width:600px!important;
-    text-align: center!important;
-    margin:5%!important;
-    overflow: scroll!important;
-}
+
 /*INPUT________________________________________________________________*/
+.bx{
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
 .bx input{
+    align-items: center;
+    align-content: center;
     border-radius: 80px;
     padding: 3px 4px;
     text-align: center;
@@ -123,6 +140,9 @@ label{
     margin-top: 25px;
     padding-top: 4px;
     padding-bottom: 3px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .bx input:focus{
     color: #00000080;
@@ -142,31 +162,88 @@ label{
     text-align: center;
     align-items: center;
     align-content: center;
+
 }
 button{
     text-align: center;
     align-items: center;
     align-content: center;
+    margin-top: 300px;
     padding: 6px 5px;
+    font-size: 15px;
+    border-radius: 5px;
     background-color: white;
+    border-color: 2px black;
+    cursor: pointer;
     letter-spacing: 2px;
     transition: .5s;
 }
 button:hover{
     color: white;
     background-color: rgba(92, 92, 92, 0.514);
-    border-radius: 10px;
+    border-radius: 15px;
     letter-spacing: 3px;
+    border-color: white;
 }
 /*TABLE_______________________________________________*/
-.table-div{
-    font-size: 12px;
-    padding: 4px 5px;
-    line-height: 14px;
+table input:hover{
+    background-color: rgb(61, 61, 61);
+    color: white;
 }
-.table-div input{
-    border-color: blueviolet;
-    border-radius: 20px;
+table a{
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid black; 
+    padding: 2px 6px;
+    border-radius: 10px;
+    background-color: red;
+    transition: 0.5s;
+}
+table a:hover{
+    background-color: white;
+    color: red;
+    border-color: red;
+}
+#table-div button{
+    margin-left: 40px;
+    margin-top: 20px;
+}
+/*NOT SURE_______________________________________________*/
+.unk input{
+    border: 10px solid blue;
+    color: white;
+}
+#lyt{
+    display: none;
+}
+#lyt h3{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+.ml-5{
+    margin-left: 10px;
+}
+.primefield {
+    margin-top: 30px;
+}
+#orgtable{
+    margin-left: 20px;
+}
+#orgtable tr th{
+    color: brown;
+    margin-left: -60px;
+    margin-right: -50px;
+}
+#orgtable tr td{
+    margin-left: -60px;
+    margin-right: -50px;
+}
+h3{
+    margin-top: 30px;
 }
 /*RESPONSIVE_______________________________________________*/
 @media all and (max-width: 960px){
@@ -191,7 +268,7 @@ button:hover{
     }
     nav ul li:hover{
         font-size: 13px;
-}
+    }
 }
 @media all and (max-width: 300px){
         .bx1{
