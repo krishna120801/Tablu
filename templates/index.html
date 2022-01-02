@@ -1,14 +1,374 @@
-{% load static %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
+	<style>
+		body{
+margin: 0;
+padding: 0; 
+	background-repeat: no-repeat no-repeat;
+  	background-attachment: fixed;
+  	background-size: 100% 100%;
+}
+/* ##Welcome to Lets Table##------------------------------------------ */
+.cool{
+	font-size: 4vw;
+	z-index: 2;
+}
+
+.cool:hover{
+font-size: 4.5vw;
+transition: .6s;
+z-index: 2;
+align-items: center;
+vertical-align: middle;
+}
+.here{
+	font-size: 3vw;
+}
+/* ##Buttons##------------------------------------------ */
+.two-buttons{
+display: flex;
+position: relative;
+justify-content: space-between;
+width: 30%;
+margin: 70px auto;
+padding-top: 30px; 
+bottom: 80px; 
+box-shadow: black;
+}
+
+.two-buttons a {
+color: #ffffff ;
+position: relative;
+font-size: 25px;
+display: flex;
+box-shadow: black;
+padding: 20px 38px;
+border-radius: 20px;
+border: 1px solid rgba(255, 255,255, 0.4);
+border-right: 1px solid rgba(255, 255,255, 0.2);
+border-bottom: 1px solid rgba(255, 255,255, 0.4);
+box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+transition: .5s;
+overflow: hidden;
+}
+
+.two-buttons a:hover {
+transform: translateY(-20px);
+}
+
+.two-buttons a::before{
+	content: '';
+	position: absolute;
+	top: 00;
+	left: 0;
+	width: 50px;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	transform: skewX(45deg) translateX(170px);
+	transition: 0.5s;
+}
+
+.two-buttons a:hover::before{
+	transform: skewX(45deg) translateX(-150px);
+	overflow: hidden;
+}
+
+/* ##Login##------------------------------------------ */
+#llink {
+backdrop-filter: blur(2px);
+background-color: #bd32f040;
+}
+
+#llink:hover {
+
+font-size: 30px;
+padding: 25px 35px;
+background-color: #3e33de40;
+transition: .5s;
+}
+
+/* ##Signup##------------------------------------------ */
+
+#slink {
+background-color: #bd32f040;
+backdrop-filter: blur(2px);
+}
+
+#slink:hover {
+font-size: 30px;
+padding: 25px 35px;
+background-color: #3e33de40;
+transition: .5s;
+}
+
+*{
+padding: 0;
+margin: 0;
+text-decoration: none;
+list-style: none;
+box-sizing: border-box; 
+}
+
+body{
+font-family: montserrat;
+}
+
+/* ##Navigation Bar##----------------------------------- */
+nav{
+background: #363131D9;
+height: 50px;
+color: #ffffff;
+z-index: 20;
+}
+
+nav:hover{
+background: #000000E6;
+transition: .4s;
+}
+
+#ln{
+color: white;
+}
+
+/* ##Messenger-topleft##---------------------------------- */
+label.logo{
+color: White;
+padding: 0 20px;
+font-size: 35px;
+line-height:50px;
+}
+
+label.logo:hover{
+color: White;
+padding: 0 20px;
+font-size: 40px;
+transition: .4s;
+cursor: pointer;
+}
+/* ##Options-positioning##------------------------------------ */
+nav ul{
+float: right;
+margin-right:15px;
+}
+
+nav ul li{
+display: inline-block;
+line-height: 20px;
+margin: 10px 10px;
+font-size: 18px;
+text-transform: uppercase;
+}
+
+nav ul li a{
+font-size: 20px;
+text-transform: uppercase;
+}
+
+nav ul li:hover{
+border: 2px solid white;
+background: #ffffff33;
+font-size: 22px;
+border-radius: 5px;
+padding: 1px 3px;
+cursor: pointer;
+transition: .3s;
+}
+
+/* ##Contact##---------------------------------------- */
+
+.cont {
+display: none;
+border-top: 2px solid white;
+}
+nav ul li:hover .cont .sm{
+text-transform:lowercase;
+}
+
+nav ul li:hover .cont{
+display: block; 
+position: absolute;
+margin: 4.5px -4px;
+cursor: pointer;
+background: #000000E6;
+}
+
+
+nav ul li:hover .cont ul{
+display: block;
+margin: 10px;
+cursor: pointer;
+}
+
+nav ul li:hover .cont ul li{
+font-size: 13px;
+cursor: pointer;
+background: #00000000;
+border: 0px solid white;
+}
+
+
+/* ##About##---------------------------------------- */
+
+.abt {
+display: none;
+font-size: 12px;
+text-align: justify;
+border-top: 2px solid white;
+}
+nav ul li:hover .abt .sm2{
+text-transform:lowercase;
+}
+
+nav ul li:hover .abt{
+display: block; 
+position: absolute;
+margin: 4.5px -120px;
+cursor: pointer;
+background: #000000E6;
+}
+
+
+nav ul li:hover .abt ul{
+display: block;
+cursor: pointer;
+}
+
+nav ul li:hover .abt ul li{
+font-size: 12px;
+cursor: pointer;
+width: 200px;
+text-align: justify;
+background: #00000000;
+border: none;
+}
+ 
+ /* Icon-------------------------------------------- */
+
+ #ico{
+ 	left: 0px;
+ 	top: 0px;
+ 	transform: scale(.5);
+ }
+
+.icon,input{
+	display: none;
+}
+ /* Responsive-------------------------------------- */
+ @media all and (max-width: 1080px){
+	.two-buttons{
+		transform: scale(.9);
+	}
+	label.logo{
+		font-size: 33px;
+	}
+}
+ @media all and (max-width: 960px){
+	label.logo{
+		font-size: 31px;
+	}
+	.cool{
+ 		
+ 		z-index: -1 ;
+ 	}
+	.two-buttons{
+		transform: scale(.8);
+	}
+ 	nav ul{
+ 		padding-right: 50px; 
+ 		float: right;
+ 		position: static;
+ 		background: black;
+ 		z-index: 100;
+ 	}
+ 	nav ul li, nax ul ul li, nav ul ul ul li{
+ 		display: block;
+ 		width: 100%;
+ 	}
+ 	nav ul ul {
+ 		position: static;
+ 		float: none;
+ 		display: none;
+ 		border-top: none;
+ 		background: black;
+ 	}
+
+ 	nav ul ul li{
+ 		background: black;
+ 	}
+
+ 	
+ 	  .cont{
+ 	 	right: 193px;
+ 	 	top: 90px;
+ 	 	width: 190px;
+ 	 	background: black;
+ 	 	border-top: none;
+ 	 }
+ 	  .abt{
+ 	 	right: 290px;
+ 	 	top: 120px;
+ 	 	width: 230px;
+ 	 	background: black;
+ 	 	border-top: none;
+ 	 }
+ 	 .icon{
+ 	 display: block;
+ 	 color: white;
+ 	 position: absolute;
+ 	 right: 30px;
+ 	 top: 15px;
+ 	 transform: scale(2);
+ 	 cursor: pointer;
+ 	 }
+ 	 
+ 	 nav ul{
+ 	 	display: none;
+ 	 	position: static;
+ 	 }
+
+ 	 [id^=btn]:checked +ul{
+ 	 	display: block;
+ 	 	padding-top: 50px;
+ 	 }
+
+ 	  [id^=btn]:checked +nav{
+ 	 	 background: #000000;
+ 	 }
+
+ 	 #navi{
+ 	 	background: black;
+ 	 }
+ 	 nav ul ul ul
+ 	 {
+ 	 	position: static;
+ 	 }
+ }
+ @media all and (max-width: 600px){
+	.two-buttons{
+		transform: scale(.7);
+	}
+	label.logo{
+		font-size: 30px;
+	}
+}
+@media all and (max-width: 450px){
+	.two-buttons{
+		transform: scale(.5);
+		margin-left: 30%;
+	}
+	label.logo{
+		font-size: 28px;
+	}
+}
+	</style>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Tables for You</title>
-	<link rel="stylesheet" href="{% static 'css/my.css' %}">
-	<link rel="shortcut icon" href="icon.ico" type="image/x-icon">
 </head>
 <body background="{% static 'photo/bg1.jpg' %}"; >
 <nav id="navi">
@@ -20,7 +380,8 @@
 		<li>Contact
 			<div class="cont">
 				<ul>
-					<li>Email: <div class="sm">XYZ@gmail.com</div></li>
+					<li>Mo: 123 456 7890</li>
+					<li>Email: <div class="sm">Krishna@gmail.com</div></li>
 				</ul>
 			</div>
 		</li>
@@ -43,5 +404,6 @@
     <div> <a href="/login" id="llink"> Login</a></div><br>
     <div> <a href="/signup" id="slink"> Signup</a></div>
     </div>
+	<footer><h4>Created by Krishna Sahu and Ritwik Kumar De</h4></footer>
 </body>
 </html>

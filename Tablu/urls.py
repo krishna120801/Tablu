@@ -22,5 +22,6 @@ urlpatterns = [
     path('signup',views.signup,name="signup"),
     path('tablu',views.main,name="tablu"),
     path('login/',views.signin,name="login"),
+    path('folders/',views.showpdf,name="folders")
 
 ]

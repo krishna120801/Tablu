@@ -3,7 +3,7 @@ from django.http import *
 from tablecreation.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages 
-import base64
+import base64,os
 from PIL import Image
 from io import BytesIO
 from django.contrib.auth import authenticate, login, logout
@@ -35,14 +35,23 @@ def home(request):
 def main(request):
     data=request.GET.get('data')
     name=str(request.user.username)
-    str1=name+"_userhis.pdf"
+    str1='folders/'+name+ "_userhis.pdf"
     if data!=None:
         data=data.replace("data:image/png;base64,","")
         im = Image.open(BytesIO(base64.b64decode(data)))
         if im.mode=="RGBA":
             im=im.convert("RGB")
         im.save(str1, 'PDF')
-    return render(request,'fsttblpg.html')
+    return render(request,'fsttblpg.html',{'user':request.user.username})
+def showpdf(request):
+    name=str(request.user.username)
+    str1=name+"_userhis.pdf"
+    filepath = os.path.join('folders',str1 )
+    try:
+        return FileResponse(open(filepath, 'rb'), content_type='application/pdf')
+    except:
+        msg="I think You hadn't create any table before please create a table"
+        return HttpResponse('<small style="padding: 0!important;"class="text-center alert alert-warning ">'+msg+'</small><h1>Please Go back to previous page</h1>')
 def signup(request):
     if request.method == 'POST':   
             username = request.POST['name'].lower()  

@@ -23,11 +23,18 @@
 			<span class="navbar-toggler-icon"></span>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<div class="d-flex"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGOUT</a></div>
+			<div class=" navbar-nav"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGOUT</a></div>
 		  </div>
 		</div>
 	  </nav>
 	<div id="inpt">
+		<centre class="d-flex">
+			<div class="d-flex"><h6>hi!</h6><i>{{user}}</i></div>
+			<div class="text-center mx-auto"><h1>Welcome To Tablu</h1><small class="ml-5">A platform for make table</small></div>
+		</centre>
+		<div>
+			<label for="">For Check your last created table please <a href="{% url 'folders' %}">Click here</a></label>
+		</div>
 	  <centre>
 	  <div class="bx">
 		  <div class="bx1">
@@ -65,9 +72,11 @@
 			  </select>
 		</div>
 	  </div>
+	  <div class="tbcnt">
 	  <div id="outtab"class="ouputtable">
 	  
 	  </div>
+	</div>
 	  <div>
 		  <button id="Save" type="submit" name="urli" onclick="Export()" class="d-none btsub btn ml-4">Save As PDF</button>
 		  <button id="Save1" type="submit" name="urli" onclick="historic()" class="d-none btsub btn ml-4">Save As History</button>
@@ -77,12 +86,21 @@
 	  <script>
 		  var tnme;
 		  var pricol;
+		  var con=document.createElement("div");
+		  con.className="tbcnt1";
+		  $(".tbcnt").css("display","none");
+		  $(".tbcnt1").css("display","none");
 		  var dict={}
 		  $(".filcontainer").css("display","none");
+		  function openTab(th)
+            {
+                window.open(th.name,'_blank');
+            }
 		   function ref(){
 			  location.reload();
 		  }
 		  function func(){
+			$(".tbcnt1").css("display","block");
 			  if ($("#t-n").val()=="" || ($("#id1").val()=="" && $("#id2").val()=="")){
 				  alert("Please fill table name or column and row value");
 			  }
@@ -150,13 +168,14 @@
 			  tr.appendChild(rmtd);
 	  
 			  table.appendChild(tr);
+			  con.appendChild(table)
 			  }
-			  document.getElementById("table-div").appendChild(table);
+			  document.getElementById("table-div").appendChild(con);
 			  var submit = document.createElement("button");
 			  submit.id="sub";
 		  var add = document.createElement("button");
 			  submit.innerHTML="Submit";
-		  add.innerHTML="ADD";
+		  add.innerHTML="ADD ROW";
 		  add.id="addbtn"
 			  submit.onclick = table_to_array;
 			  document.getElementById("table-div").appendChild(submit);
@@ -198,6 +217,7 @@
 
 		  function table_to_array(){
 			  $(".filcontainer").css("display","block");
+			  $(".tbcnt").css("display","block");
 			  var table = document.getElementById("table");
 			  var arr = [];
 			  var columnname = [];

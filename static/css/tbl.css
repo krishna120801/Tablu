@@ -1,6 +1,7 @@
 body{
     margin: 0;
     padding: 0; 
+    background-color: #f1e5e5;
         background-repeat: no-repeat no-repeat;
           background-attachment: fixed;
           background-size: 100% 100%;
@@ -27,9 +28,10 @@ nav{
     position: fixed ;
     width: 100%;
     }
-#navt{
-    top: 0px;
-}
+    .nav-link.active{
+        text-decoration: none;
+        color: aqua !important;;
+    }
 /* ##Table-topleft##---------------------------------- */
 label.logo{
     color: White;
@@ -72,9 +74,9 @@ nav ul{
     transition: .6s;
     text-align: center;
     }
-.d-flex{
-    float: right;
-}
+    .outputtable{
+        text-align: center;
+    }
 .d-flex a:hover{
     color: cadetblue;
 }
@@ -255,7 +257,11 @@ table a:hover{
 h3{
     margin-top: 30px;
 }
-.tbcnt{
+.navbar-nav{
+    margin-left: 85%;
+    
+}
+.tbcnt,.tbcnt1{
     width: 90%;
     margin-left: auto;
     top:20px;
@@ -264,7 +270,7 @@ h3{
     margin-right: auto;
     overflow-y: scroll;
     overflow-x: scroll;
-    border: 10px solid brown;
+    border: 10px solid rgb(108, 204, 175);
 }
 /*RESPONSIVE_______________________________________________*/
 @media all and (max-width: 960px){

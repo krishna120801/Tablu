@@ -1,229 +1,360 @@
 body{
-    margin: 0;
-    padding: 0; 
-        background-repeat: no-repeat no-repeat;
-          background-attachment: fixed;
-          background-size: 100% 100%;
-          overflow-x: hidden;
-    }
-    *{
-    padding: 0;
-    margin: 0;
-    text-decoration: none;
-    list-style: none;
-    box-sizing: border-box; 
-    }
-    
-    body{
-    font-family: montserrat;
-    }
+margin: 0;
+padding: 0; 
+	background-repeat: no-repeat no-repeat;
+  	background-attachment: fixed;
+  	background-size: 100% 100%;
+}
+/* ##Welcome to Lets Table##------------------------------------------ */
+.cool{
+	font-size: 4vw;
+	z-index: 2;
+}
+
+.cool:hover{
+font-size: 4.5vw;
+transition: .6s;
+z-index: 2;
+align-items: center;
+vertical-align: middle;
+}
+.here{
+	font-size: 3vw;
+}
+/* ##Buttons##------------------------------------------ */
+.two-buttons{
+display: flex;
+position: relative;
+justify-content: space-between;
+width: 30%;
+margin: 70px auto;
+padding-top: 30px; 
+bottom: 80px; 
+box-shadow: black;
+}
+
+.two-buttons a {
+color: #ffffff ;
+position: relative;
+font-size: 25px;
+display: flex;
+box-shadow: black;
+padding: 20px 38px;
+border-radius: 20px;
+border: 1px solid rgba(255, 255,255, 0.4);
+border-right: 1px solid rgba(255, 255,255, 0.2);
+border-bottom: 1px solid rgba(255, 255,255, 0.4);
+box-shadow: 0 5px 45px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3px);
+transition: .5s;
+overflow: hidden;
+}
+
+.two-buttons a:hover {
+transform: translateY(-20px);
+}
+
+.two-buttons a::before{
+	content: '';
+	position: absolute;
+	top: 00;
+	left: 0;
+	width: 50px;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.5);
+	transform: skewX(45deg) translateX(170px);
+	transition: 0.5s;
+}
+
+.two-buttons a:hover::before{
+	transform: skewX(45deg) translateX(-150px);
+	overflow: hidden;
+}
+
+/* ##Login##------------------------------------------ */
+#llink {
+backdrop-filter: blur(2px);
+background-color: #bd32f040;
+}
+
+#llink:hover {
+
+font-size: 30px;
+padding: 25px 35px;
+background-color: #3e33de40;
+transition: .5s;
+}
+
+/* ##Signup##------------------------------------------ */
+
+#slink {
+background-color: #bd32f040;
+backdrop-filter: blur(2px);
+}
+
+#slink:hover {
+font-size: 30px;
+padding: 25px 35px;
+background-color: #3e33de40;
+transition: .5s;
+}
+
+*{
+padding: 0;
+margin: 0;
+text-decoration: none;
+list-style: none;
+box-sizing: border-box; 
+}
+
+body{
+font-family: montserrat;
+}
+
 /* ##Navigation Bar##----------------------------------- */
 nav{
-    background: black;
-    height: 50px;
-    color: #ffffff;
-    z-index: 20;
-    }
-    
-/* ##Table-topleft##---------------------------------- */
+background: #363131D9;
+height: 50px;
+color: #ffffff;
+z-index: 20;
+}
+
+nav:hover{
+background: #000000E6;
+transition: .4s;
+}
+
+#ln{
+color: white;
+}
+
+/* ##Messenger-topleft##---------------------------------- */
 label.logo{
-    color: White;
-    padding: 0 20px;
-    font-size: 30px;
-    line-height:50px;
-    }
-    
-    label.logo:hover{
-    color: White;
-    padding: 0 20px;
-    font-size: 35px;
-    transition: .4s;
-    cursor: pointer;
-    }
+color: White;
+padding: 0 20px;
+font-size: 35px;
+line-height:50px;
+}
+
+label.logo:hover{
+color: White;
+padding: 0 20px;
+font-size: 40px;
+transition: .4s;
+cursor: pointer;
+}
 /* ##Options-positioning##------------------------------------ */
 nav ul{
-    float: right;
-    margin-right:15px;
-    }
-    
-    nav ul li{
-    display: inline-block;
-    line-height: 25px;
-    margin: 10px 10px;
-    font-size: 18px;
-    border-radius: 15px;
-    padding: 1px 3px;
-    text-align: center;
-    text-transform: uppercase;
-    }
-    
-    nav ul li:hover{
-    border: 2px solid white;
-    background: #ffffff33;
-    font-size: 19px;
-    border-radius: 20px;
-    padding: 2px 9px;
-    cursor: pointer;
-    transition: .6s;
-    text-align: center;
-    }
-/* Box---------------------------------------------- */
-.bx{
-	height: 94vh;
-	width: 100%;
-    padding: 10px;
-    border: 5px solid black;
+float: right;
+margin-right:15px;
 }
-.bx1{
-	width: 100%;
-	align-items: center;
-    align-content: center;
-    text-align: center;
-    border-radius: 15px;
-    display: block;
-    position: relative;
-	padding-top: 5vh;
-    padding-bottom: 5vh;
-    margin-top: 30px;
-    font-size: 35px;
-	/*border: 2px solid black;*/
-    transition: 0.8s;
+
+nav ul li{
+display: inline-block;
+line-height: 20px;
+margin: 10px 10px;
+font-size: 18px;
+text-transform: uppercase;
 }
-.bx1:hover{
-    transform: scale(1.2);
-    color: rgb(207, 108, 101);
+
+nav ul li a{
+font-size: 20px;
+text-transform: uppercase;
 }
-input{
-    border-radius: 80px;
-    padding: 3px 4px;
-    text-align: center;
-    transition: .7s;
+
+nav ul li:hover{
+border: 2px solid white;
+background: #ffffff33;
+font-size: 22px;
+border-radius: 5px;
+padding: 1px 3px;
+cursor: pointer;
+transition: .3s;
 }
-input:focus{
-    color: #00000080;
-    font-size: 14px;
-    border-color: rgb(207, 108, 101);
-    text-align: center;
-    background-color: rgba(199, 199, 199, 0.678);
-   font-weight: bold;
+
+/* ##Contact##---------------------------------------- */
+
+.cont {
+display: none;
+border-top: 2px solid white;
 }
-input::placeholder{
-    text-align: center;
-    letter-spacing: 2px;
+nav ul li:hover .cont .sm{
+text-transform:lowercase;
 }
-.bx2{
-    width: 100%;
-	align-items: center;
-    align-content: center;
-    text-align: center;
-    border-radius: 15px;
-	padding-top: 5vh;
-    padding-bottom: 5vh;
-    margin-top: 30px;
-    font-size: 30px;
-    transition: 0.8s;
-	/*border: 2px solid black;*/
+
+nav ul li:hover .cont{
+display: block; 
+position: absolute;
+margin: 4.5px -4px;
+cursor: pointer;
+background: #000000E6;
 }
-.bx2:hover{
-    transform: scale(1.2);
-    color: rgb(207, 108, 101);
+
+
+nav ul li:hover .cont ul{
+display: block;
+margin: 10px;
+cursor: pointer;
 }
-.bx3{
-	width: 100%;
-	align-items: center;
-    align-content: center;
-    text-align: center;
-    border-radius: 15px;
-	padding-top: 5vh;
-    padding-bottom: 5vh;
-    margin-top: 30px;
-    font-size: 30px;
-    transition: 0.8s;
-	/*border: 2px solid black;*/
+
+nav ul li:hover .cont ul li{
+font-size: 13px;
+cursor: pointer;
+background: #00000000;
+border: 0px solid white;
 }
-.bx3:hover{
-    transform: scale(1.2);
-    color: rgb(207, 108, 101);
+
+
+/* ##About##---------------------------------------- */
+
+.abt {
+display: none;
+font-size: 12px;
+text-align: justify;
+border-top: 2px solid white;
 }
-/*BUTTON________________________________________________________________ */
-.btsub{
-    text-align: center;
-    align-items: center;
-    align-content: center;
+nav ul li:hover .abt .sm2{
+text-transform:lowercase;
 }
-button{
-    text-align: center;
-    align-items: center;
-    align-content: center;
-    margin-top: 50px;
-    padding: 6px 5px;
-    font-size: 15px;
-    border-radius: 5px;
-    background-color: white;
-    border-color: 2px black;
-    cursor: pointer;
-    letter-spacing: 2px;
-    transition: .6s;
+
+nav ul li:hover .abt{
+display: block; 
+position: absolute;
+margin: 4.5px -120px;
+cursor: pointer;
+background: #000000E6;
 }
-button:hover{
-    color: white;
-    background-color: rgba(92, 92, 92, 0.514);
-    border-radius: 10px;
-    letter-spacing: 3px;
+
+
+nav ul li:hover .abt ul{
+display: block;
+cursor: pointer;
 }
-/*RESPONSIVE_______________________________________________*/
-@media all and (max-width: 960px){
-    .bx1{
-        transform: scale(0.9);
-        margin-top: 30px;
-    }
-    .bx1:hover{
-        transform: scale(1.0);
-    }
-    .bx2{
-        margin-top: 30px;
-        transform: scale(0.9);
-    }
-    .bx2:hover{
-        transform: scale(1.0);
-    }
-    .bx3{
-        margin-top: 30px;
-        transform: scale(0.9);
-    }
-    .bx3:hover{
-        transform: scale(1.0);
+
+nav ul li:hover .abt ul li{
+font-size: 12px;
+cursor: pointer;
+width: 200px;
+text-align: justify;
+background: #00000000;
+border: none;
+}
+ 
+ /* Icon-------------------------------------------- */
+
+ #ico{
+ 	left: 0px;
+ 	top: 0px;
+ 	transform: scale(.5);
+ }
+
+.icon,input{
+	display: none;
+}
+ /* Responsive-------------------------------------- */
+ @media all and (max-width: 1080px){
+	.two-buttons{
+		transform: scale(.9);
+	}
+	label.logo{
+		font-size: 33px;
+	}
+}
+ @media all and (max-width: 960px){
+	label.logo{
+		font-size: 31px;
+	}
+	.cool{
+ 		
+ 		z-index: -1 ;
+ 	}
+	.two-buttons{
+		transform: scale(.8);
+	}
+ 	nav ul{
+ 		padding-right: 50px; 
+ 		float: right;
+ 		position: static;
+ 		background: black;
+ 		z-index: 100;
+ 	}
+ 	nav ul li, nax ul ul li, nav ul ul ul li{
+ 		display: block;
+ 		width: 100%;
+ 	}
+ 	nav ul ul {
+ 		position: static;
+ 		float: none;
+ 		display: none;
+ 		border-top: none;
+ 		background: black;
+ 	}
+
+ 	nav ul ul li{
+ 		background: black;
+ 	}
+
+ 	
+ 	  .cont{
+ 	 	right: 193px;
+ 	 	top: 90px;
+ 	 	width: 190px;
+ 	 	background: black;
+ 	 	border-top: none;
+ 	 }
+ 	  .abt{
+ 	 	right: 290px;
+ 	 	top: 120px;
+ 	 	width: 230px;
+ 	 	background: black;
+ 	 	border-top: none;
+ 	 }
+ 	 .icon{
+ 	 display: block;
+ 	 color: white;
+ 	 position: absolute;
+ 	 right: 30px;
+ 	 top: 15px;
+ 	 transform: scale(2);
+ 	 cursor: pointer;
+ 	 }
+ 	 
+ 	 nav ul{
+ 	 	display: none;
+ 	 	position: static;
+ 	 }
+
+ 	 [id^=btn]:checked +ul{
+ 	 	display: block;
+ 	 	padding-top: 50px;
+ 	 }
+
+ 	  [id^=btn]:checked +nav{
+ 	 	 background: #000000;
+ 	 }
+
+ 	 #navi{
+ 	 	background: black;
+ 	 }
+ 	 nav ul ul ul
+ 	 {
+ 	 	position: static;
+ 	 }
+ }
+ @media all and (max-width: 600px){
+	.two-buttons{
+		transform: scale(.7);
+	}
+	label.logo{
+		font-size: 30px;
+	}
 }
 @media all and (max-width: 450px){
-    label.logo{
-        font-size: 20px;
-    }
-    label.logo:hover{
-        font-size: 25px;
-    }
-    nav ul li{
-        font-size: 12px;
-    }
-    nav ul li:hover{
-        font-size: 13px;
-}
-@media all and (max-width: 300px){
-        .bx1{
-            font-size: 25px;
-        }
-        .bx2{
-            font-size: 25px;
-        }
-        .bx3{
-            font-size: 25px;
-        }
-        input{
-            width: 85%;
-        }
-        label.logo{
-            font-size: 15px;
-        }
-        label.logo:hover{
-            font-size: 18px;
-        }
+	.two-buttons{
+		transform: scale(.5);
+		margin-left: 30%;
+	}
+	label.logo{
+		font-size: 28px;
+	}
 }
