@@ -73,6 +73,10 @@
 		  var dict={}
 		  $(".filcontainer").css("display","none");
 		  function func(){
+			  if ($("#t-n").val()=="" && $("#id1").val()=="" && $("#id2").val()==""){
+				  alert("Please fill table name column and row value");
+			  }
+			  else{
 		  btn=document.createElement('button');
 		  var arr2=new Array();
 		  var rowval;
@@ -178,7 +182,8 @@
 	  document.querySelector("#table").appendChild(row);
 	  };
 
-		  }
+		   }
+		 }
 		  function table_to_array(){
 			  $(".filcontainer").css("display","block");
 			  var table = document.getElementById("table");
@@ -187,7 +192,12 @@
 			  var row = table.rows[0];
 			  var row_arr=[];
 			  for(var j=1; j<=row.cells.length; j++){
-				row_arr.push(row.cells[j-1].childNodes[0].textContent);
+				  if (row.cells[j-1].childNodes[0]==undefined){
+					alert("please enter header of columns");
+					location.reload(true);
+					return;
+				  }
+				else{row_arr.push(row.cells[j-1].childNodes[0].textContent);}
 			  }
 			  columnname.push(row_arr);
 			  console.log(columnname);
