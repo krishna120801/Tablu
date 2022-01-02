@@ -74,7 +74,9 @@ nav ul{
     }
 .d-flex{
     float: right;
-
+}
+.d-flex a:hover{
+    color: cadetblue;
 }
 .d-flex a{
     color: white;
@@ -212,6 +214,7 @@ table a:hover{
     margin-left: 40px;
     margin-top: 20px;
 }
+
 /*NOT SURE_______________________________________________*/
 .unk input{
     border: 10px solid blue;
