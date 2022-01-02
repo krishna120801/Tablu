@@ -72,6 +72,19 @@ nav ul{
     transition: .6s;
     text-align: center;
     }
+.d-flex{
+    float: right;
+
+}
+.d-flex a{
+    color: white;
+    float: right;
+    margin-right:10px;
+    line-height: 25px;
+    margin: 10px 10px;
+    margin-top: 2px;
+    background-color: #212529;
+}
 /* Box---------------------------------------------- */
 .bx{
 	height: 82vh;
@@ -84,7 +97,6 @@ nav ul{
     align-content: center;
     text-align: center;
     border-radius: 15px;
-    display: block;
 	padding-top: 8vh;
     padding-bottom: 3vh;
     font-size: 35px;
@@ -112,7 +124,15 @@ label{
 }
 
 /*INPUT________________________________________________________________*/
+.bx{
+    align-content: center;
+    text-align: center;
+    align-items: center;
+}
+
 .bx input{
+    align-items: center;
+    align-content: center;
     border-radius: 80px;
     padding: 3px 4px;
     text-align: center;
@@ -120,6 +140,9 @@ label{
     margin-top: 25px;
     padding-top: 4px;
     padding-bottom: 3px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
 }
 .bx input:focus{
     color: #00000080;
@@ -139,12 +162,13 @@ label{
     text-align: center;
     align-items: center;
     align-content: center;
+
 }
 button{
     text-align: center;
     align-items: center;
     align-content: center;
-    margin-top: 20px;
+    margin-top: 300px;
     padding: 6px 5px;
     font-size: 15px;
     border-radius: 5px;
@@ -157,8 +181,9 @@ button{
 button:hover{
     color: white;
     background-color: rgba(92, 92, 92, 0.514);
-    border-radius: 10px;
+    border-radius: 15px;
     letter-spacing: 3px;
+    border-color: white;
 }
 /*TABLE_______________________________________________*/
 table input:hover{
@@ -187,6 +212,39 @@ table a:hover{
     margin-left: 40px;
     margin-top: 20px;
 }
+/*NOT SURE_______________________________________________*/
+.unk input{
+    border: 10px solid blue;
+    color: white;
+}
+#lyt{
+    display: none;
+}
+#lyt h3{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+.ml-5{
+    margin-left: 10px;
+}
+.primefield {
+    margin-top: 30px;
+}
+#orgtable{
+    margin-left: 20px;
+}
+#orgtable tr th{
+    color: brown;
+    margin-left: -60px;
+    margin-right: -50px;
+}
+#orgtable tr td{
+    margin-left: -60px;
+    margin-right: -50px;
+}
+h3{
+    margin-top: 30px;
+}
 /*RESPONSIVE_______________________________________________*/
 @media all and (max-width: 960px){
     .bx1{
@@ -210,6 +268,7 @@ table a:hover{
     }
     nav ul li:hover{
         font-size: 13px;
+    }
 }
 @media all and (max-width: 300px){
         .bx1{
