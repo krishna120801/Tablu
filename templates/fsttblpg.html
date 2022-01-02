@@ -53,15 +53,16 @@
 	  </div>
 	  <div id="table-div">
 		  <div id="lyt">
-		<label for="">table name:- <h4 id="tblname"></h4></label>
-	  <h3>Datatypes of particular column.</h3>
+		 	<div class="bkb"><button onclick="ref()"> Back</button></div>
+			<label for=""><h3>Table name:- </h3><h5 id="tblname"></h5></label>
+	  		<h3>Datatypes of particular column.</h3>
 		  </div>
 	  </div>
 	  <div class="container filcontainer"> 
-		  <h3>Filters</h3>
-		<div id="filters" class="filter m-4">
-		  <select name="columnvalue" id="columnvalue">
-		  </select>
+		 	  <h3>Filters</h3>
+			  <div id="filters" class="filter m-4">
+			  <select name="columnvalue" id="columnvalue">
+			  </select>
 		</div>
 	  </div>
 	  <div id="outtab"class="ouputtable">
@@ -77,6 +78,9 @@
 		  var pricol;
 		  var dict={}
 		  $(".filcontainer").css("display","none");
+		   function ref(){
+			  location.reload();
+		  }
 		  function func(){
 			  if ($("#t-n").val()=="" || ($("#id1").val()=="" && $("#id2").val()=="")){
 				  alert("Please fill table name or column and row value");
@@ -599,7 +603,7 @@ di.appendChild(di1);
                             width: 500
                         }]
                     };
-                    pdfMake.createPdf(docDefinition).download(document.getElementById("tblname").textContent+".pdf");
+                    pdfMake.createPdf(docDefinition).download("Table.pdf");
                 }
             });
         }
