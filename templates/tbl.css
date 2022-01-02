@@ -227,6 +227,13 @@ table a:hover{
     margin-top: 30px;
     margin-left: 10px;
 }
+#lyt h5{
+    margin-top: 30px;
+    margin-left: 10px;
+}
+.container.filcontainer h3{
+    margin-top: 30px; 
+}
 .ml-5{
     margin-left: 10px;
 }
