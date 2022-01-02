@@ -3,6 +3,9 @@ from django.http import *
 from tablecreation.models import *
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages 
+import base64
+from PIL import Image
+from io import BytesIO
 from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 from django.contrib.auth.models import User
@@ -30,6 +33,11 @@ def home(request):
     return render(request,'index.html')
 @login_required(login_url="login")
 def main(request):
+    data=request.GET.get('data')
+    if data!=None:
+        data=data.replace("data:image/png;base64,","")
+        im = Image.open(BytesIO(base64.b64decode(data)))
+        im.save('image.pdf', 'PDF')
     return render(request,'fsttblpg.html')
 def signup(request):
     if request.method == 'POST':   

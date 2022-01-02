@@ -69,7 +69,7 @@
 	  
 	  </div>
 	  <div>
-		  <button id="Save" onclick="Export()" class="d-none btsub btn ml-4">Save The Table</button>
+		  <button id="Save" type="submit" name="urli" onclick="Export()" class="d-none btsub btn ml-4">Save The Table</button>
 	  </div>
 	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -213,7 +213,7 @@
 			  columnname.push(row_arr);
 			  console.log(columnname);
 			  if ($("#columnvalue").children().length<columnname.length){
-				for (var i=0;i<columnname.length+1;i++){
+				for (var i=0;i<columnname[0].length;i++){
 				  op=document.createElement("option");
 				  op.value=columnname[0][i];
 				  op.innerHTML=columnname[0][i];
@@ -303,7 +303,10 @@
 			  alert("Table Updated");
 			$("#outtab").children("table").remove();
 		  }
-		  else{alert("table Created!");}
+		  else{alert("table Created!");
+		  $("#Save").removeClass( 'd-none' );
+		 $( '#Save' ).addClass( 'd-block' );
+		}
 		 $('.filter').css('display','block'); 
 		  document.getElementById("outtab").appendChild(tab);
 		}
@@ -596,16 +599,22 @@ di.appendChild(di1);
 	  function Export() {
             html2canvas(document.getElementById('orgtable'), {
                 onrendered: function (canvas) {
-                    var data = canvas.toDataURL();
+                    var data = canvas.toDataURL();;
                     var docDefinition = {
                         content: [{
                             image: data,
                             width: 500
                         }]
                     };
-                    pdfMake.createPdf(docDefinition).download("Table.pdf");
-                }
-            });
+					pdfMake.createPdf(docDefinition).download(document.getElementById("tblname").textContent+".pdf");
+                //    pdfMake.createPdf(docDefinition).download(document.getElementById("tblname").textContent+".pdf");
+$.ajax({
+    url: 'tablu',
+    data :{'data':data}
+});
+   
+            }
+		});
         }
 	  </script>
 </html>
