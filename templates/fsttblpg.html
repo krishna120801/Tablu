@@ -50,6 +50,19 @@
 	  
 		</div>
 	</div>
+	<div>
+	<h4>Do You want Primary Column?</h4>
+<div class="d-flex radbtn">
+	<div class="custom-control custom-radio">
+		<input type="radio" class="custom-control-input" name="askforprime" onclick="yesclick(this);" value="yes"id="yesfield">
+		<label class="custom-control-label" for="yesfield">Yes</label>
+	  </div>
+	  <div class="custom-control custom-radio">
+		<input type="radio" class="custom-control-input" name="askforprime" onclick="noclick(this);" value="no" id="nofield">
+		<label class="custom-control-label" for="nofield">No</label>
+	  </div>
+</div>
+</div>
 		<div class="primefield container">
 		  <label for="primefield">Enter column name Which you want as primary</label><br>
 	  <input type="text" id="primarycol" class="form-control primefield" name="primefield" value="" required/>
@@ -142,6 +155,7 @@
 		  });
 	  
 			  table.appendChild(tr1);
+			  console.log(arr)
 			  for(var i=2; i<=id1; i++){
 			l=0;
 				  var tr=document.createElement("tr");
@@ -150,10 +164,10 @@
 				  for(var j=1; j<=id2; j++){
 					  var td=document.createElement("td");
 					  var ip=document.createElement("input");
-			  if (arr[l]=="Datetime"){
+			  if (arr[j-1]=="Datetime"){
 				ip.type="datetime-local";
 			  }
-			  else{ip.type=arr[l++];}
+			  else{ip.type=arr[j-1];}
 					  ip.id="ip"+ i+ j;
 					  td.appendChild(ip);
 					  tr.appendChild(td);
@@ -188,10 +202,10 @@
 	  });
 	  const addRow = () => {
 	  let row = document.createElement("tr");
-	  row.id="tr"+rowval+1;
-	  rowval+=1;
+	  rowval+=1; 
+	  row.id="tr"+rowval;
 	  id2+=1;
-		for (var m=1;m<=arr2.length;m++){
+		for (var m=0;m<arr2.length;m++){
 		var ip=document.createElement("input");
 		ip.id="ip"+rowval+m;
 		if (dict[arr2[m]]=="Datetime"){
@@ -204,7 +218,8 @@
 	}
 			var rmtd=document.createElement("td");
 			rmtd.innerHTML="<a href='#'>Delete</a>"
-			rmtd.id="rmtd"+rmtdval+1;
+			rmtdval+=1;
+			rmtd.id="rmtd"+rmtdval;
 			  rmtd.onclick = function(){
 				  var tr = document.getElementById("tr" + this.id.substring(4));
 				  tr.parentNode.removeChild(tr);
@@ -624,7 +639,12 @@ di.appendChild(di1);
 	  }
 	  
 	  });
-	  
+	 function yesclick(radio){
+		 $(".primefield").css("display","block");
+	 } 
+	 function noclick(radio){
+		 $(".primefield").css("display","none");
+	 } 
 	  function Export() {
             html2canvas(document.getElementById('orgtable'), {
                 onrendered: function (canvas) {
