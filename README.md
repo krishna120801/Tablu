@@ -45,7 +45,6 @@ python -m pip install -r requirements.txt
 python manage.py runserver
 ```
 <li>For self convinience install the live preview plugin. <br>
-<li>Integrate the .py and .html files available inside the cloned directory in your project. <br>
 <li>Now just RUN the Project by pasting the generated link on the browser. <br>
 <li>If everything is done in order then this will open the page in your local machine. <br>
 </ol>
