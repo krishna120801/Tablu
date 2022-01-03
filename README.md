@@ -2,7 +2,10 @@
 
 ## Online Table Creation
 This is an online table creation platform made by Krishna Sahu and Ritwik Kumar De as the final project of Walkover University Program. The web application is a online platform for creating and storing tables in an online database with featires like row deletion , filtering etc.The project is made over Python and Django as backend, SQlite 3 as the database, and HTML, CSS, JS and Boostrap as frontend.
+
+A deployed version of this Project is [http://tablu.herokuapp.com/](http://tablu.herokuapp.com/)
 ## Login credentials:
+##### For local machines/Servers:
 1.  email= _ksahu5505@gmail.com_
     password=**hello@123**
 2. email= _ritwik@gmail.com_
@@ -53,7 +56,7 @@ python manage.py runserver
 <li> Install git via terminal. <br>
 (On Ubuntu you can do sudo apt-get install git) <br>
 <li> Then do a git clone of your repository, or simply download the zip file of your repository from GitHub and extract it.<br>
-<li> Copy your java project in the new folder created after cloning (its name will be same to that of the repository you cloned). <br>
+<li> Copy your python project in the new folder created after cloning (its name will be same to that of the repository you cloned). <br>
 <li> Add all the changes you want. <br>
 <li> Then execute these commands:
 
