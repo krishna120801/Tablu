@@ -23,17 +23,17 @@
 			<span class="navbar-toggler-icon"></span>
 		  </button>
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<div class=" navbar-nav"><a class="nav-link active" aria-current="page" href="{% url 'login' %}">LOGOUT</a></div>
+			<div class=" navbar-nav"><a class="nav-link bg-dark active rounded" aria-current="page" href="{% url 'login' %}">LOGOUT</a></div>
 		  </div>
 		</div>
 	  </nav>
 	<div id="inpt">
 		<centre class="d-flex">
 			<div class="d-flex"><h6>hi!</h6><i>{{user}}</i></div>
-			<div class="text-center mx-auto"><h1>Welcome To Tablu</h1><small class="ml-5">A platform for make table</small></div>
 		</centre>
+		<div class="text-center mx-auto"><h1>Welcome To Tablu</h1><small class="ml-5">A platform for make table</small></div>
 		<div>
-			<label for="">For Check your last created table please <a href="{% url 'folders' %}">Click here</a></label>
+			<label for=""><a href="{% url 'folders' %}">Last Created Table</a></label>
 		</div>
 	  <centre>
 	  <div class="bx">
@@ -45,9 +45,11 @@
 			  X<br>
 			  <input id="id2" class="form-control" type="number" min="1" placeholder="Number of Columns" />
 		  </div>
-		<div class="extrafields row">
+		  <div class="tbcnt2">
+		<div class="extrafields">
 	  
 		</div>
+	</div>
 		<div class="primefield container">
 		  <label for="primefield">Enter column name Which you want as primary</label><br>
 	  <input type="text" id="primarycol" class="form-control primefield" name="primefield" value="" required/>
@@ -609,16 +611,18 @@ di.appendChild(di1);
 		var col=document.getElementById("id2").value;
 		console.log(col);
 		for(var j=1; j<=col; j++){
-		$(".extrafields").append('<div class="col-6 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><input type="text" placeholder="Enter Column Name"/></div>');
+		$(".extrafields").append('<div class="col-6 mx-auto my-auto"><select class="dropdown"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><input type="text" class="form-control" placeholder="Enter column'+j+'name"/></div>');
 		}
 	  });
 		$("#id2").blur(function() {
+			$(".tbcnt2").addClass("hh");
 		  $(".col-6").remove();
 		  var col=document.getElementById("id2").value;
 		  console.log(col);
 	  for(var j=1; j<=col; j++){
-		  $(".extrafields").append('<div class="col-6 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><input type="text" placeholder="Enter Column Name"/></div>');
+		  $(".extrafields").append('<div class="col-6 mx-auto my-auto"><select class="m-1"><option>String</option><option>Number</option><option>Boolean</option><option>Email</option><option>Datetime</option></select><input type="text" placeholder="Enter column'+j+' name"/></div>');
 	  }
+	  
 	  });
 	  
 	  function Export() {
