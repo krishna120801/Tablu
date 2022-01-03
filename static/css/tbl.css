@@ -126,8 +126,13 @@ label{
 .bx label:hover{
     color: rgb(207, 108, 101);
 }
-
+.radbtn{
+    justify-content: space-evenly;
+}
 /*INPUT________________________________________________________________*/
+#yesfield,#nofield{
+    width:20px;
+}
 .bx{
     align-content: center;
     text-align: center;
@@ -241,6 +246,7 @@ table a:hover{
 }
 .primefield {
     margin-top: 30px;
+    display: none;
 }
 #orgtable{
     margin-left: 20px;
@@ -251,6 +257,8 @@ table a:hover{
     margin-right: -50px;
 }
 #orgtable tr td{
+    color:#000;
+    font-weight: bold;
     margin-left: -60px;
     margin-right: -50px;
 }
