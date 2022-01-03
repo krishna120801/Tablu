@@ -37,7 +37,7 @@ def main(request):
     name=str(request.user.username)
     str1='folders/'+name+ "_userhis.pdf"
     if data!=None:
-        data=data.replace("data:image/png;base64,","")
+        data=data.replace("data:image/png;base64","")
         im = Image.open(BytesIO(base64.b64decode(data)))
         if im.mode=="RGBA":
             im=im.convert("RGB")
