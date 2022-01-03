@@ -73,5 +73,7 @@ def signup(request):
             username,
             email,
             password1)
+            user = authenticate(username=username, password=password1)
+            login(request, user)
             return redirect('tablu')
     return render(request, 'registration/rig.html')  
