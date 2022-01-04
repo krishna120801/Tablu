@@ -101,8 +101,8 @@ nav ul{
     align-content: center;
     text-align: center;
     border-radius: 15px;
-	padding-top: 8vh;
-    padding-bottom: 3vh;
+	padding-top: 20px;
+    padding-bottom: 5px;
     font-size: 35px;
 /*	border: 2px solid black;*/
     transition: 0.8s;
@@ -113,8 +113,8 @@ nav ul{
     align-content: center;
     text-align: center;
     border-radius: 15px;
-	padding-top: 2vh;
-    padding-bottom: 3vh;
+	padding-top: 20px;
+    padding-bottom: 30px;
     margin-top: 10px;
     font-size: 35px;
     transition: 0.8s;
@@ -138,15 +138,14 @@ label{
     text-align: center;
     align-items: center;
 }
-
 .bx input{
     align-items: center;
     align-content: center;
-    border-radius: 80px;
+    border-radius: 50px;
     padding: 3px 4px;
     text-align: center;
     transition: .7s;
-    margin-top: 25px;
+    margin-top: 10px;
     padding-top: 4px;
     padding-bottom: 3px;
     width: 300px;
@@ -221,7 +220,6 @@ table a:hover{
     margin-left: 40px;
     margin-top: 20px;
 }
-
 /*NOT SURE_______________________________________________*/
 .unk input{
     border: 10px solid blue;
@@ -253,20 +251,16 @@ table a:hover{
 }
 #orgtable tr th{
     color: brown;
-    margin-left: -60px;
-    margin-right: -50px;
 }
 #orgtable tr td{
     color:#000;
     font-weight: bold;
-    margin-left: -60px;
-    margin-right: -50px;
 }
 h3{
     margin-top: 30px;
 }
 .navbar-nav{
-    margin-left: 85%;   
+    margin-left: 85%;
 }
 .hh{
     height:50%;
@@ -274,27 +268,44 @@ h3{
 .tbcnt,.tbcnt1,.tbcnt2{
     width: 90%;
     margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
     top:20px;
     padding-top:10px;
     padding-left:10px;
     margin-right: auto;
     overflow-y: scroll;
     overflow-x: scroll;
-    border: 5px solid rgb(108, 204, 175);
+    border: 3px solid brown;
     border-radius: 10px;
 }
+.pc{
+    margin-top: 20px;
+}
 .d-flex{
-	font-size: 20x;
-	margin-top: 15px;
+	font-size: 20px;
+	margin-top: 10px;
 	margin-bottom: 15px;
 	margin-left: 10px;
 	text-decoration: none;
 	color: #000000;
 	text-transform: capitalize;
+    transition: .6s;
+}
+.d-flex:hover{
+    color: darkcyan;
 }
 .d-flex h6{
 	text-transform: capitalize;
-	font-size: 24x;
+	font-size: 24px;
+    transition: .6s;
+}
+.d-flex:hover h6{
+    color: brown;
+}
+.prev{
+    text-align: center;
+	align-items: center;
 }
 .prev a{
 	text-align: center;
@@ -302,7 +313,78 @@ h3{
 	text-decoration: none;
 	text-decoration: none;
 	color: #000000;
-	font-size: 0px;
+	font-size: 26px;
+    border-bottom: 2px solid white;
+    border-radius: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    transition: .7s;
+}
+.prev a:hover{
+	color: brown;	
+    border-color: brown;
+}
+h2{
+    border-bottom: 2px solid white;
+    border-radius: 5px;  
+    cursor: default;
+    transition: .6s;
+}
+h2:hover{
+    color: brown;	
+}
+.text-center.mx-auto h1{
+    font-size: 45px;
+    cursor: default;
+    transition: .6s;
+}
+.text-center.mx-auto h1:hover{
+    color: darkcyan;
+}
+.custom-control.custom-radio{
+    font-size: 20px;
+}
+.custom-control.custom-radio:hover{
+    color: brown;
+}
+.ml-5{
+    font-size: 18px;
+    text-decoration: underline;
+    transition: .6s;
+    font-weight: bold;
+    cursor: none;
+}
+.ml-5:hover{
+    color: rgb(37, 50, 231);
+    text-decoration: none;
+}
+/*SCROLL__________________________________________________*/
+body ::-webkit-scrollbar {
+    width: 8px;  
+    height: 8px;            
+}
+body ::-webkit-scrollbar-track {
+    background: rgb(184, 184, 184);       
+}
+body ::-webkit-scrollbar-thumb {
+    background-color: brown;   
+    border: 2px solid black; 
+    border-radius: 50px; 
+    border-color: brown;   
+}
+/*PAGE SCROLL__________________________________________________*/
+html ::-webkit-scrollbar {
+    width: 8px;  
+    height: 8px;            
+}
+html ::-webkit-scrollbar-track {
+    background: rgb(184, 184, 184);       
+}
+html ::-webkit-scrollbar-thumb {
+    background-color: rgb(42, 130, 165);   
+    border: 2px solid black; 
+    border-radius: 50px; 
+    border-color: rgb(42, 165, 159);   
 }
 
 /*RESPONSIVE_______________________________________________*/
@@ -315,12 +397,21 @@ h3{
         margin-top: 10px;
         transform: scale(0.9);
     }
-.d-flex{
-	font-size: 16px;
-}
-.d-flex h6{
-	font-size: 20px;
-}
+    .text-center.mx-auto h1{
+        font-size: 40px;
+    }
+    .prev a{
+        font-size: 24px;
+    }
+    .bx input{
+        width: 280px;
+    }
+    .d-flex{
+        font-size: 16px;
+    }
+    .d-flex h6{
+        font-size: 20px;
+    }
 }
 @media all and (max-width: 450px){
     label.logo{
@@ -334,6 +425,21 @@ h3{
     }
     nav ul li:hover{
         font-size: 13px;
+    }
+    .text-center.mx-auto h1{
+        font-size: 35px;
+    }
+    .bx input{
+        width: 200px;
+    }
+    .prev a{
+        font-size: 20px;
+    }
+    .d-flex{
+        font-size: 14px;
+    }
+    .d-flex h6{
+        font-size: 18px;
     }
 }
 @media all and (max-width: 300px){
