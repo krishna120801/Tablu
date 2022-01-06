@@ -523,7 +523,7 @@ di.appendChild(di1);
     td = tr[i].getElementsByTagName("td")[mainval];
     if (td) {
       txtValue = td.textContent || td.innerText;
-      if (txtValue.value == filter) {
+      if (parseInt(txtValue) == parseInt(filter)) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
