@@ -36,13 +36,13 @@ git clone https://github.com/krishna120801/Tablu.git <br>
 <li>Open project directory with terminal and write in Terminal<br>
 
 ```
-python -m venv venv
+python -m venv venv #create virtual environment
 
-venv/scripts/activate
+venv/scripts/activate  #activate virtual environment
 
-python -m pip install -r requirements.txt
+python -m pip install -r requirements.txt  #install all required files
 
-python manage.py runserver
+python manage.py runserver     #run server
 ```
 <li>For self convinience install the live preview plugin. <br>
 <li>Now just RUN the Project by pasting the generated link on the browser. <br>
