@@ -33,16 +33,22 @@ git clone https://github.com/krishna120801/Tablu.git <br>
 <li>Pre-installed Browser and text editor like Atom or VS Code or Sublime Text with python installation is required. <br>
 <li>Open the cloned repository in either VS Code or Atom. <br>
 <li>Python 3.9.0 is required
-<li>Open project directory with terminal and write in Terminal<br>
-
+<li>Open project directory with terminal and follow below instruction<br>
+<li> create virtual environment by write below command in terminal
 ```
-python -m venv venv #create virtual environment
-
-venv/scripts/activate  #activate virtual environment
-
-python -m pip install -r requirements.txt  #install all required files
-
-python manage.py runserver     #run server
+python -m venv venv 
+ ```
+ <li> activate virtual environment by using below command in terminal
+ ```
+venv/scripts/activate
+ ```
+<li> install all required files by using below command in terminal
+```
+python -m pip install -r requirements.txt
+ ```
+<li> Run django server by using of below command in terminal
+```
+python manage.py runserver
 ```
 <li>For self convinience install the live preview plugin. <br>
 <li>Now just RUN the Project by pasting the generated link on the browser. <br>
