@@ -99,7 +99,7 @@
 	</div>
 	  <div>
 		  <button id="Save" type="submit" name="urli" onclick="Export()" class="d-none btsub btn ml-4">Save As PDF</button>
-		  <button id="Save1" type="submit" name="urli" onclick="historic()" class="d-none btsub btn ml-4">Save As History</button>
+		  <button id="Save1" type="submit" onclick="historic()" value="histbtn" class="d-none btsub btn ml-4">Save As History</button>
 	  </div>
 	  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
@@ -669,10 +669,13 @@ di.appendChild(di1);
 			alert("History Updated!");
             html2canvas(document.getElementById('orgtable'), {
                 onrendered: function (canvas) {
+					let cookie = document.cookie
+					let csrfToken = cookie.substring(cookie.indexOf('=') + 1);
                     var data = canvas.toDataURL();
 					$.ajax({
-    url: 'tablu',
-    data :{'data':data}
+						type:"GET",
+    url: '',
+    data : {'data':data}
 });
 				}
 				});

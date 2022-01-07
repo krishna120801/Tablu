@@ -33,20 +33,21 @@ def home(request):
     return render(request,'index.html')
 @login_required(login_url="login")
 def main(request):
-    data=request.GET.get('data')
-    name=str(request.user.username)
-    str1='folders/'+name+ "_userhis.pdf"
-    if data!=None:
-        data=data.replace("data:image/png;base64","")
-        im = Image.open(BytesIO(base64.b64decode(data)))
-        if im.mode=="RGBA":
-            im=im.convert("RGB")
-        im.save(str1, 'PDF')
+    if request.method=="GET":
+        data=request.GET.get('data')
+        name=str(request.user.username)
+        str1='folders/'+name+ "_userhis.pdf"
+        if data!=None:
+            data=data.replace("data:image/png;base64","")
+            im = Image.open(BytesIO(base64.b64decode(data)))
+            if im.mode=="RGBA":
+                im=im.convert("L")
+            im.save(str1, 'PDF')
     return render(request,'fsttblpg.html',{'user':request.user.username})
 def showpdf(request):
     name=str(request.user.username)
     str1=name+"_userhis.pdf"
-    filepath = os.path.join('folders',str1 )
+    filepath = os.path.join('folders/',str1 )
     try:
         return FileResponse(open(filepath, 'rb'), content_type='application/pdf')
     except:

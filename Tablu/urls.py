@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.home,name="home"),
     path('signup',views.signup,name="signup"),
-    path('tablu',views.main,name="tablu"),
+    path('tablu/',views.main,name="tablu"),
     path('login/',views.signin,name="login"),
     path('folders/',views.showpdf,name="folders")
 
